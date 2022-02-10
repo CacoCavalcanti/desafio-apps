@@ -35,17 +35,9 @@ final class ListNewsTableViewCell: UITableViewCell {
         return label
     }()
     
-    //    private override init(frame: CGRect) {
-    //      super.init(frame: frame)
-    //      setupViews()
-    //      setupConstraints()
-    //    }
-    //
-    //    public convenience init(with type: CardType) {
-    //      self.init(frame: .zero)
-    //      configureCard(with: type)
-    //    }
-    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+       super.init(style: style, reuseIdentifier: "ListNewsTableViewCell")
+    }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
