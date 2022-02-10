@@ -9,6 +9,9 @@ import Foundation
 import UIKit
 
 final class ListNewsTableViewCell: UITableViewCell {
+    
+    // MARK: - Private Proprieties
+
     private lazy var newsImageLabel: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFit
@@ -35,6 +38,8 @@ final class ListNewsTableViewCell: UITableViewCell {
         return label
     }()
     
+    // MARK: - Life Cycle
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
        super.init(style: style, reuseIdentifier: "ListNewsTableViewCell")
     }
@@ -42,6 +47,11 @@ final class ListNewsTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+}
+
+private extension ListNewsTableViewCell {
+    
+    // MARK: - PRivate Methods
     
     private func setupViews() {
         addSubviews(newsImageLabel, newsTitleLabel, newsTextLabel)
@@ -54,7 +64,6 @@ final class ListNewsTableViewCell: UITableViewCell {
             newsImageLabel.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 8),
             newsImageLabel.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 16),
             newsImageLabel.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -8)
-            //        newsImageLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -padding)
         ])
         
         NSLayoutConstraint.activate([
