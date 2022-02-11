@@ -20,7 +20,7 @@ protocol NewsListInteractorToPresenterProtocol: class {
 
 protocol NewsListPresentorToInteractorProtocol: class {
     var presenter: NewsListInteractorToPresenterProtocol? { get set }
-    var news: [NewsListEntity]? { get }
+    var news: [NewsModel]? { get }
     
     func fetchNews()
 }

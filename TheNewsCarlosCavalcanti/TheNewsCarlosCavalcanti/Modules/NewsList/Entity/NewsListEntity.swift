@@ -7,11 +7,11 @@
 
 import Foundation
 
-typealias NewsModel = [NewsListEntity]
+typealias NewsModelEntity = [NewsListEntity]
 
 // MARK: - NewsModelElement
 struct NewsListEntity: Codable {
-    let content: [Conteudo]
+    let content: [NewsModel]
     let product: String
     
     enum CodingKeys: String, CodingKey {
@@ -21,7 +21,7 @@ struct NewsListEntity: Codable {
 }
 
 // MARK: - Conteudo
-struct Conteudo: Codable {
+struct NewsModel: Codable {
     let author: [String]?
     let comercialContent: Bool?
     let subTitle, text: String?

@@ -13,7 +13,7 @@ final class ListNewsInteractor: NewsListPresentorToInteractorProtocol {
     // MARK: - Properties
     
     var presenter: NewsListInteractorToPresenterProtocol?
-    private(set) var news: [NewsListEntity]?
+    private(set) var news: [NewsModel]?
     private let url = "https://raw.githubusercontent.com/Infoglobo/desafio-apps/master/capa.json"
     
     // MARK: - Methods
@@ -22,8 +22,8 @@ final class ListNewsInteractor: NewsListPresentorToInteractorProtocol {
         AF.request(url).responseData { (data) in
             switch data.result {
             case .success(let newsData):
-                if let newsList: [NewsListEntity] = try? JSONDecoder().decode(NewsModel.self, from: newsData) {
-                    self.news = newsList
+                if let newsList = try? JSONDecoder().decode(NewsModelEntity.self, from: newsData) {
+                    self.news = newsList.first?.content
                     self.presenter?.theNewsFetched()
                 }
                 

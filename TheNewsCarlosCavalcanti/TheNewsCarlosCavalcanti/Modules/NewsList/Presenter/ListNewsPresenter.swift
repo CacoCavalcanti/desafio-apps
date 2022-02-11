@@ -19,15 +19,14 @@ final class ListNewsPresenter: NewsListViewToPresenterProtocol {
     
     func updateView() {
         interactor?.fetchNews()
-        
     }
     
     func getNewsListCount() -> Int? {
-        return 1
+        return interactor?.news?.count
     }
     
     func getNews(index: Int) -> NewsModel? {
-        return NewsModel()
+        return interactor?.news?[index]
     }
     
 }
@@ -35,7 +34,7 @@ final class ListNewsPresenter: NewsListViewToPresenterProtocol {
 extension ListNewsPresenter: NewsListInteractorToPresenterProtocol {
     
     func theNewsFetched() {
-        print()
+        view?.showNews()
     }
     
     func theNewsFetchedFailed() {

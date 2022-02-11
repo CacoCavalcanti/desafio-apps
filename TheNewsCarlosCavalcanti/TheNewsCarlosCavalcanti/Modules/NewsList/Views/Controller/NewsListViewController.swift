@@ -29,10 +29,10 @@ final class NewsListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        presenter?.updateView()
         setupTableView()
         setupConstraints()
-        presenter?.updateView()
+        
     }
 }
 
@@ -61,7 +61,7 @@ extension NewsListViewController: UITableViewDelegate, UITableViewDataSource {
     // MARK: - UITableViewDelegate
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return presenter?.getNewsListCount() ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -75,12 +75,10 @@ extension NewsListViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension NewsListViewController: NewsListPresenterToViewProtocol {
     func showNews() {
-        print()
+        newsTableView.reloadData()
     }
     
     func showError() {
         print()
     }
-    
-    
 }
