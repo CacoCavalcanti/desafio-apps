@@ -8,8 +8,8 @@
 import Foundation
 import UIKit
 
-final class NewsListTableViewController: UIViewController {
-    
+final class NewsListViewController: UIViewController {
+   
     // MARK: - Private Proprieties
     
     private var newsTableView: UITableView = {
@@ -21,6 +21,10 @@ final class NewsListTableViewController: UIViewController {
         return table
     }()
     
+    // MARK: - Public Properties
+    
+    var presenter: NewsListViewToPresenterProtocol?
+    
     // MARK: - Life Cicle
     
     override func viewDidLoad() {
@@ -28,10 +32,11 @@ final class NewsListTableViewController: UIViewController {
         
         setupTableView()
         setupConstraints()
+        presenter?.updateView()
     }
 }
 
-private extension NewsListTableViewController {
+private extension NewsListViewController {
     
     // MARK: - Private Methods
     
@@ -51,7 +56,7 @@ private extension NewsListTableViewController {
     }
 }
 
-extension NewsListTableViewController: UITableViewDelegate, UITableViewDataSource {
+extension NewsListViewController: UITableViewDelegate, UITableViewDataSource {
     
     // MARK: - UITableViewDelegate
     
@@ -66,4 +71,16 @@ extension NewsListTableViewController: UITableViewDelegate, UITableViewDataSourc
         }
         return cell
     }
+}
+
+extension NewsListViewController: NewsListPresenterToViewProtocol {
+    func showNews() {
+        print()
+    }
+    
+    func showError() {
+        print()
+    }
+    
+    
 }

@@ -8,19 +8,27 @@
 import Foundation
 import Alamofire
 
-final class ListNewsInteractor {
+final class ListNewsInteractor: NewsListPresentorToInteractorProtocol {
     
-    static func getNewsList(urls: String, completion: @escaping ([NewsListEntity]?, Error?) -> Void)  {
-        AF.request(urls).responseData { (data) in
+    // MARK: - Properties
+    
+    var presenter: NewsListInteractorToPresenterProtocol?
+    private(set) var news: [NewsListEntity]?
+    private let url = "https://raw.githubusercontent.com/Infoglobo/desafio-apps/master/capa.json"
+    
+    // MARK: - Methods
+    
+    func fetchNews() {
+        AF.request(url).responseData { (data) in
             switch data.result {
             case .success(let newsData):
                 if let newsList: [NewsListEntity] = try? JSONDecoder().decode(NewsModel.self, from: newsData) {
-                    completion(newsList, nil)
+                    self.news = newsList
+                    self.presenter?.theNewsFetched()
                 }
                 
-            case .failure(let error):
-                completion(nil, error)
-                print("Failure! \(error.localizedDescription)")
+            case .failure(_):
+                self.presenter?.theNewsFetchedFailed()
             }
         }
     }

@@ -8,33 +8,33 @@
 import Foundation
 import UIKit
 
-protocol TheNewsListPresenterToViewProtocol: class {
+protocol NewsListPresenterToViewProtocol: class {
     func showNews()
     func showError()
 }
 
-protocol TheNewsListInteractorToPresenterProtocol: class {
-    func liveNewsFetched()
-    func liveNewsFetchedFailed()
+protocol NewsListInteractorToPresenterProtocol: class {
+    func theNewsFetched()
+    func theNewsFetchedFailed()
 }
 
-protocol TheNewsListPresentorToInteractorProtocol: class {
-    var presenter: TheNewsListInteractorToPresenterProtocol? { get set }
-//    var news: [TheNewsModel]? { get }
+protocol NewsListPresentorToInteractorProtocol: class {
+    var presenter: NewsListInteractorToPresenterProtocol? { get set }
+    var news: [NewsListEntity]? { get }
     
-    func fetchTheNews()
+    func fetchNews()
 }
 
-protocol ViewToPresenterProtocol: class {
-    var view: TheNewsListPresenterToViewProtocol? { get set }
-    var interactor: TheNewsListPresentorToInteractorProtocol? { get set }
-    var router: TheNewsListPresenterToRouterProtocol? { get set }
+protocol NewsListViewToPresenterProtocol: class {
+    var view: NewsListPresenterToViewProtocol? { get set }
+    var interactor: NewsListPresentorToInteractorProtocol? { get set }
+    var router: NewsListPresenterToRouterProtocol? { get set }
     
     func updateView()
     func getNewsListCount() -> Int?
-//    func getNews(index: Int) -> TheNewsModel?
+    func getNews(index: Int) -> NewsModel?
 }
 
-protocol TheNewsListPresenterToRouterProtocol: class {
+protocol NewsListPresenterToRouterProtocol: class {
     static func createModule() -> UIViewController
 }
