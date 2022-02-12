@@ -20,14 +20,6 @@ final class ListNewsFirstTableViewCell: UITableViewCell {
         return image
     }()
     
-    private lazy var backgroundSectionView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .black
-        view.clipsToBounds = true
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-    
     private lazy var newsSection: UILabel = {
         let label = UILabel()
         label.configure(style: .newsListCoverSection, color: TNStyleGuide.Color.white)
@@ -57,6 +49,14 @@ final class ListNewsFirstTableViewCell: UITableViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+        
+    override func didMoveToSuperview() {
+        super.didMoveToSuperview()
+
+        if let frame = superview?.frame {
+            makeGradient(from: frame)
+        }
     }
 }
 
@@ -96,9 +96,20 @@ private extension ListNewsFirstTableViewCell {
         newsSection.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         newsSection.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
     }
+    
+    func makeGradient(from frame: CGRect) {
+        let rect = CGRect(x: 0, y: 0, width: frame.width, height: 250)
+        let gradient = CAGradientLayer()
+        gradient.frame = rect
+        gradient.colors = [UIColor.clear.cgColor, UIColor.black.cgColor]
+        gradient.startPoint = CGPoint(x: 1, y: 0.5)
+        gradient.endPoint = CGPoint(x: 1, y: 1)
+        newsImageView.layer.addSublayer(gradient)
+    }
 }
 
 extension ListNewsFirstTableViewCell {
+    
     // MARK: - View Configuration
     
     func setup(with news: NewsModel) {

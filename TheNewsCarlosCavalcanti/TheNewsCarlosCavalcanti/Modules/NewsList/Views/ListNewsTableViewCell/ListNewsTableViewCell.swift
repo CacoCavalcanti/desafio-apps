@@ -48,12 +48,6 @@ final class ListNewsTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        newsImageView.translatesAutoresizingMaskIntoConstraints = false
-        setupConstraints()
-    }
 }
 
 private extension ListNewsTableViewCell {
@@ -99,8 +93,6 @@ extension ListNewsTableViewCell {
         newsImageView.setImage(fromURL: image?.url)
         newsSection.text = news.section.name.uppercased()
         newsTitleLabel.text = news.title
-        
-        backgroundColor = .white
     }
 }
 
