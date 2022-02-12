@@ -15,7 +15,7 @@ final class NewsListViewController: UIViewController {
     private var newsTableView: UITableView = {
         let table = UITableView()
         table.translatesAutoresizingMaskIntoConstraints = false
-        table.rowHeight = 250
+        table.rowHeight = UITableView.automaticDimension
         table.tableFooterView = UIView(frame: .zero)
         
         return table
@@ -136,7 +136,7 @@ extension NewsListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return indexPath.row == 0 ? 250 : UITableView.automaticDimension
+        return indexPath.row == 0 ? 250 : 100
     }
 }
 

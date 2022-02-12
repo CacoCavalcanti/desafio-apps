@@ -34,6 +34,7 @@ final class ListNewsTableViewCell: UITableViewCell {
         label.textAlignment = .left
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
         return label
     }()
     
@@ -76,7 +77,7 @@ private extension ListNewsTableViewCell {
         ])
         
         NSLayoutConstraint.activate([
-            newsTitleLabel.topAnchor.constraint(equalTo: newsSection.bottomAnchor, constant: 8),
+            newsTitleLabel.topAnchor.constraint(equalTo: newsSection.bottomAnchor, constant: 4),
             newsTitleLabel.leadingAnchor.constraint(equalTo: newsImageView.trailingAnchor, constant: 16),
             newsTitleLabel.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -16),
             newsTitleLabel.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -8)
