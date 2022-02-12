@@ -38,7 +38,7 @@ extension ListNewsPresenter: NewsListInteractorToPresenterProtocol {
     }
     
     func theNewsFetchedFailed() {
-        print()
+        view?.showError()
     }
     
 }

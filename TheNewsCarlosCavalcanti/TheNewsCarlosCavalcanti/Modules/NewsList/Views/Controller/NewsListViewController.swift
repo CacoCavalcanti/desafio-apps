@@ -71,11 +71,13 @@ private extension NewsListViewController {
     func setupConstraints() {
         newsTableView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
         
-        newsTableView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
-        newsTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
-        newsTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
-        newsTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
-        newsTableView.heightAnchor.constraint(equalToConstant: self.view.frame.height).isActive = true
+        NSLayoutConstraint.activate([
+            newsTableView.topAnchor.constraint(equalTo: view.topAnchor),
+            newsTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            newsTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            newsTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            newsTableView.heightAnchor.constraint(equalToConstant: self.view.frame.height)
+        ])
     }
 }
 
@@ -120,6 +122,13 @@ extension NewsListViewController: NewsListPresenterToViewProtocol {
     }
     
     func showError() {
-        print()
+        let title = "Ocorreu um erro"
+        let message = "Não foi possível carregar as notícias. Verifique sua conexão e tente novamente."
+        UIAlertController.showTryAgainAlert(withTitle: title,
+                                            message: message,
+                                            forViewController: self,
+                                            dismissHandler: nil,
+                                            tryAgain: { [weak self] _ in self?.presenter?.updateView() },
+                                            dismissMessage: "OK")
     }
 }
