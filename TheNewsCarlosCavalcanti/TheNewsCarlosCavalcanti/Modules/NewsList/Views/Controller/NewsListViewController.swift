@@ -34,6 +34,12 @@ final class NewsListViewController: UIViewController {
         setupConstraints()
         setupNavigationController()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.isNavigationBarHidden = false
+        navigationItem.hidesBackButton = true
+    }
 }
 
 private extension NewsListViewController {
@@ -42,6 +48,15 @@ private extension NewsListViewController {
     
     func setupNavigationController() {
         navigationController?.navigationBar.isHidden = false
+        navigationController?.setupSunriseNavigationBar(controller: self)
+        navigationItem.title = "The News"
+        
+        let barsImage = UIImage.TNImage.sandwichBars
+        let barsButton = UIButton()
+        barsButton.setupNavigationItem(image: barsImage, withSize: 32)
+        barsButton.tintColor = TNStyleGuide.Color.white
+        let leftNavBarButton = UIBarButtonItem(customView: barsButton)
+        navigationItem.leftBarButtonItem = leftNavBarButton
     }
     
     func setupTableView() {

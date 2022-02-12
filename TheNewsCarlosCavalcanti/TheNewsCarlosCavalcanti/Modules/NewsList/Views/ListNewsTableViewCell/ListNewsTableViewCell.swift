@@ -30,7 +30,7 @@ final class ListNewsTableViewCell: UITableViewCell {
     
     private lazy var newsTitleLabel: UILabel = {
         let label = UILabel()
-        label.configure(style: .newsListTitle, color: TNStyleGuide.Color.darkBlue)
+        label.configure(style: .newsListTitle, color: TNStyleGuide.Color.boldBlue)
         label.textAlignment = .left
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0

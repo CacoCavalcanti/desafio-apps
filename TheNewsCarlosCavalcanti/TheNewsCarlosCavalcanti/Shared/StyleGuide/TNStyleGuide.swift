@@ -15,7 +15,7 @@ struct TNStyleGuide {
         static let redNegativeColor: UIColor = UIColor(red: 169/255, green: 0/255, blue: 137/255, alpha: 1)
         static let grayActionColor: UIColor = UIColor(red: 150/255, green: 150/255, blue: 170/255, alpha: 1)
         static let redDesableColor: UIColor = UIColor(red: 178/255, green: 51/255, blue: 46/255, alpha: 1)
-        static let blueActionColor: UIColor = UIColor(red: 178/255, green: 51/255, blue: 46/255, alpha: 1)
+        static let blue: UIColor = UIColor(red: 41/255, green: 119/255, blue: 188/255, alpha: 1)
         static let grayFlipside: UIColor = UIColor(red: 31/255, green: 33/255, blue: 36/255, alpha: 1)
         
         //MARK: - Layout Colors
