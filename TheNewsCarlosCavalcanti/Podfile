@@ -6,7 +6,8 @@ target 'TheNewsCarlosCavalcanti' do
   use_frameworks!
 
   # Pods for TheNewsCarlosCavalcanti
-  pod 'Alamofire', '= 5.4.3'	
+  pod 'Alamofire', '= 5.4.3'
+pod 'SDWebImage', '~> 5.12.0'	
 
   target 'TheNewsCarlosCavalcantiTests' do
     inherit! :search_paths

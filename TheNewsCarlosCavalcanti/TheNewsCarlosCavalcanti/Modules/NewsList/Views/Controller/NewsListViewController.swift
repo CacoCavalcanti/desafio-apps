@@ -16,7 +16,7 @@ final class NewsListViewController: UIViewController {
         let table = UITableView()
         table.translatesAutoresizingMaskIntoConstraints = false
         table.register(ListNewsTableViewCell.self, forCellReuseIdentifier: "ListNewsTableViewCell")
-        table.rowHeight = 152
+        table.rowHeight = UITableView.automaticDimension
         table.tableFooterView = UIView(frame: .zero)
         return table
     }()
@@ -65,11 +65,17 @@ extension NewsListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ListNewsTableViewCell") as? ListNewsTableViewCell,
+              let newsModel = presenter?.getNews(index: indexPath.row) else {
+                  return UITableViewCell()
+              }
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ListNewsTableViewCell") as? ListNewsTableViewCell else {
-            return UITableViewCell()
-        }
+        cell.setup(with: newsModel)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
     }
 }
 

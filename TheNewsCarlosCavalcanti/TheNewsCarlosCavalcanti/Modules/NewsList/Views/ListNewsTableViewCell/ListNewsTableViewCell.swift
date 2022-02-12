@@ -12,29 +12,31 @@ final class ListNewsTableViewCell: UITableViewCell {
     
     // MARK: - Private Proprieties
 
-    private lazy var newsImageLabel: UIImageView = {
+    private lazy var newsImageView: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFit
         image.clipsToBounds = true
         image.backgroundColor = .white
-        image.layer.cornerRadius = 8
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
     
-    private lazy var newsTitleLabel: UILabel = {
+    private lazy var newsSection: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 18, weight: .medium)
-        label.textAlignment = .right
+        label.font = UIFont.systemFont(ofSize: 12, weight: .medium)
+        label.textAlignment = .left
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .darkGray
         return label
     }()
     
-    private lazy var newsTextLabel: UILabel = {
+    private lazy var newsTitleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 18, weight: .medium)
-        label.textAlignment = .right
+        label.font = UIFont.systemFont(ofSize: 15, weight: .medium)
+        label.textAlignment = .left
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 0
+        label.textColor = .blue
         return label
     }()
     
@@ -42,10 +44,18 @@ final class ListNewsTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
        super.init(style: style, reuseIdentifier: "ListNewsTableViewCell")
+        setupViews()
+        setupConstraints()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        newsImageView.translatesAutoresizingMaskIntoConstraints = false
+        setupConstraints()
     }
 }
 
@@ -53,45 +63,50 @@ private extension ListNewsTableViewCell {
     
     // MARK: - PRivate Methods
     
-    private func setupViews() {
-        addSubviews(newsImageLabel, newsTitleLabel, newsTextLabel)
+    func setupViews() {
+        addSubviews(newsImageView, newsSection, newsTitleLabel)
     }
     
-    private func setupConstraints() {
+    func setupConstraints() {
         let safeArea = self.safeAreaLayoutGuide
         
         NSLayoutConstraint.activate([
-            newsImageLabel.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 8),
-            newsImageLabel.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 16),
-            newsImageLabel.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -8)
+            newsImageView.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 8),
+            newsImageView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 16),
+            newsImageView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -8),
+            newsImageView.widthAnchor.constraint(equalToConstant: self.frame.width / 3)
         ])
         
         NSLayoutConstraint.activate([
-            newsTitleLabel.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 8),
-            newsTitleLabel.leadingAnchor.constraint(equalTo: newsImageLabel.trailingAnchor, constant: 16),
-            newsTitleLabel.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -16)
+            newsSection.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 8),
+            newsSection.leadingAnchor.constraint(equalTo: newsImageView.trailingAnchor, constant: 16),
+            newsSection.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -16)
             
         ])
         
         NSLayoutConstraint.activate([
-            newsTextLabel.topAnchor.constraint(equalTo: newsTitleLabel.bottomAnchor, constant: 8),
-            newsTextLabel.leadingAnchor.constraint(equalTo: newsImageLabel.leadingAnchor, constant: 16),
-            newsTextLabel.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -16),
-            newsTextLabel.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -8)
+            newsTitleLabel.topAnchor.constraint(equalTo: newsSection.bottomAnchor, constant: 8),
+            newsTitleLabel.leadingAnchor.constraint(equalTo: newsImageView.trailingAnchor, constant: 16),
+            newsTitleLabel.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -16),
+            newsTitleLabel.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -8)
         ])
-        
-        //        newsTitleLabel.setContentHuggingPriority(.init(rawValue: 252), for: .vertical)
-        //        newsTitleLabel.setContentCompressionResistancePriority(.init(rawValue: 751), for: .vertical)
     }
 }
 
-  // MARK: - View Configuration
-//  extension ListNewsTableViewCell {
-//    public func configureCard(with type: CardType) {
-//      let model = CardModel.getCardDetails(for: type)
-//      newsImageLabel.image = UIImage(named: model.imageName)
-//      newsTextLabel.text = model.characterName
-//      backgroundColor = model.backgroundColor
-//    }
-//  }
-//}
+extension ListNewsTableViewCell {
+    
+    // MARK: - View Configuration
+    
+    func setup(with news: NewsModel) {
+        
+        setupViews()
+        setupConstraints()
+        let image = news.images.first
+        newsImageView.setImage(fromURL: image?.url)
+        newsSection.text = news.section.name
+        newsTitleLabel.text = news.title
+        
+        backgroundColor = .white
+    }
+}
+
