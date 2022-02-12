@@ -30,7 +30,7 @@ final class ListNewsFirstTableViewCell: UITableViewCell {
     
     private lazy var newsSection: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 12, weight: .medium)
+        label.configure(style: .newsListCoverSection, color: TNStyleGuide.Color.white)
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .white
@@ -40,11 +40,10 @@ final class ListNewsFirstTableViewCell: UITableViewCell {
     
     private lazy var newsTitleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 18, weight: .medium)
+        label.configure(style: .newsListCoverTitle, color: TNStyleGuide.Color.white)
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.textColor = .white
         return label
     }()
 
@@ -82,23 +81,17 @@ private extension ListNewsFirstTableViewCell {
         
         NSLayoutConstraint.activate([
             newsTitleLabel.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor),
-            newsTitleLabel.bottomAnchor.constraint(equalTo: newsImageView.bottomAnchor, constant: -24),
+            newsTitleLabel.bottomAnchor.constraint(equalTo: newsImageView.bottomAnchor, constant: -16),
             newsTitleLabel.leadingAnchor.constraint(equalTo: newsImageView.trailingAnchor, constant: 32),
             newsTitleLabel.trailingAnchor.constraint(equalTo: newsImageView.trailingAnchor, constant: -32),
         ])
         
         NSLayoutConstraint.activate([
-            newsSection.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor),            newsSection.bottomAnchor.constraint(equalTo: newsTitleLabel.topAnchor, constant: -8),
+            newsSection.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor),
+            newsSection.bottomAnchor.constraint(equalTo: newsTitleLabel.topAnchor, constant: -8),
             newsSection.leadingAnchor.constraint(greaterThanOrEqualTo: newsImageView.trailingAnchor, constant: 32),
             newsSection.trailingAnchor.constraint(greaterThanOrEqualTo: newsImageView.trailingAnchor, constant: -32)
         ])
-        
-//        NSLayoutConstraint.activate([
-//            backgroundSectionView.centerXAnchor.constraint(equalTo: newsSection.centerXAnchor),
-//            backgroundSectionView.centerYAnchor.constraint(equalTo: newsSection.centerYAnchor),
-//            backgroundSectionView.widthAnchor.constraint(equalTo: newsSection.widthAnchor),
-//            backgroundSectionView.heightAnchor.constraint(equalTo: newsSection.heightAnchor)
-//        ])
         
         newsSection.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         newsSection.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)

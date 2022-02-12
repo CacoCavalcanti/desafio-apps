@@ -22,20 +22,18 @@ final class ListNewsTableViewCell: UITableViewCell {
     
     private lazy var newsSection: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 12, weight: .medium)
+        label.configure(style: .newsListSection, color: TNStyleGuide.Color.grayActionColor)
         label.textAlignment = .left
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .darkGray
         return label
     }()
     
     private lazy var newsTitleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 15, weight: .medium)
+        label.configure(style: .newsListTitle, color: TNStyleGuide.Color.darkBlue)
         label.textAlignment = .left
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.textColor = .blue
         return label
     }()
     
@@ -99,7 +97,7 @@ extension ListNewsTableViewCell {
     func setup(with news: NewsModel) {
         let image = news.images.first
         newsImageView.setImage(fromURL: image?.url)
-        newsSection.text = news.section.name
+        newsSection.text = news.section.name.uppercased()
         newsTitleLabel.text = news.title
         
         backgroundColor = .white

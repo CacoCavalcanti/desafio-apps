@@ -32,13 +32,17 @@ final class NewsListViewController: UIViewController {
         presenter?.updateView()
         setupTableView()
         setupConstraints()
-        
+        setupNavigationController()
     }
 }
 
 private extension NewsListViewController {
     
     // MARK: - Private Methods
+    
+    func setupNavigationController() {
+        navigationController?.navigationBar.isHidden = false
+    }
     
     func setupTableView() {
         newsTableView.dataSource = self

@@ -12,6 +12,20 @@
 		11472F5527B71D24004404EF /* NewsListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11472F5427B71D24004404EF /* NewsListRouter.swift */; };
 		11472F5727B729E7004404EF /* ImageKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11472F5627B729E7004404EF /* ImageKit.swift */; };
 		11472F5A27B73AA4004404EF /* ListNewsFirstTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11472F5927B73AA4004404EF /* ListNewsFirstTableViewCell.swift */; };
+		11472F5D27B7E86B004404EF /* TNStyleGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11472F5C27B7E86B004404EF /* TNStyleGuide.swift */; };
+		11472F6A27B7E9F3004404EF /* Roboto-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 11472F5F27B7E9F1004404EF /* Roboto-MediumItalic.ttf */; };
+		11472F6B27B7E9F3004404EF /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 11472F6027B7E9F1004404EF /* Roboto-Black.ttf */; };
+		11472F6C27B7E9F3004404EF /* Roboto-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 11472F6127B7E9F1004404EF /* Roboto-BoldItalic.ttf */; };
+		11472F6D27B7E9F3004404EF /* Roboto-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 11472F6227B7E9F1004404EF /* Roboto-BlackItalic.ttf */; };
+		11472F6E27B7E9F3004404EF /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 11472F6327B7E9F2004404EF /* Roboto-Medium.ttf */; };
+		11472F6F27B7E9F3004404EF /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 11472F6427B7E9F2004404EF /* Roboto-Bold.ttf */; };
+		11472F7027B7E9F3004404EF /* Roboto-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 11472F6527B7E9F2004404EF /* Roboto-ThinItalic.ttf */; };
+		11472F7127B7E9F3004404EF /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 11472F6627B7E9F2004404EF /* Roboto-Regular.ttf */; };
+		11472F7227B7E9F3004404EF /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 11472F6727B7E9F2004404EF /* Roboto-Thin.ttf */; };
+		11472F7327B7E9F3004404EF /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 11472F6827B7E9F2004404EF /* Roboto-Italic.ttf */; };
+		11472F7427B7E9F3004404EF /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 11472F6927B7E9F2004404EF /* Roboto-Light.ttf */; };
+		11472F7727B7EA5F004404EF /* TNStyleGuideFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11472F7627B7EA5F004404EF /* TNStyleGuideFont.swift */; };
+		11472F7927B7ECBB004404EF /* UILabel+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11472F7827B7ECBB004404EF /* UILabel+Extensions.swift */; };
 		1192A07F27B53B9C00F2BA3E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1192A07E27B53B9C00F2BA3E /* AppDelegate.swift */; };
 		1192A08127B53B9C00F2BA3E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1192A08027B53B9C00F2BA3E /* SceneDelegate.swift */; };
 		1192A08327B53B9C00F2BA3E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1192A08227B53B9C00F2BA3E /* ViewController.swift */; };
@@ -52,6 +66,20 @@
 		11472F5427B71D24004404EF /* NewsListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListRouter.swift; sourceTree = "<group>"; };
 		11472F5627B729E7004404EF /* ImageKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageKit.swift; sourceTree = "<group>"; };
 		11472F5927B73AA4004404EF /* ListNewsFirstTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListNewsFirstTableViewCell.swift; sourceTree = "<group>"; };
+		11472F5C27B7E86B004404EF /* TNStyleGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNStyleGuide.swift; sourceTree = "<group>"; };
+		11472F5F27B7E9F1004404EF /* Roboto-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-MediumItalic.ttf"; path = "TheNewsCarlosCavalcanti/Shared/Font/Roboto-MediumItalic.ttf"; sourceTree = SOURCE_ROOT; };
+		11472F6027B7E9F1004404EF /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Black.ttf"; path = "TheNewsCarlosCavalcanti/Shared/Font/Roboto-Black.ttf"; sourceTree = SOURCE_ROOT; };
+		11472F6127B7E9F1004404EF /* Roboto-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-BoldItalic.ttf"; path = "TheNewsCarlosCavalcanti/Shared/Font/Roboto-BoldItalic.ttf"; sourceTree = SOURCE_ROOT; };
+		11472F6227B7E9F1004404EF /* Roboto-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-BlackItalic.ttf"; path = "TheNewsCarlosCavalcanti/Shared/Font/Roboto-BlackItalic.ttf"; sourceTree = SOURCE_ROOT; };
+		11472F6327B7E9F2004404EF /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Medium.ttf"; path = "TheNewsCarlosCavalcanti/Shared/Font/Roboto-Medium.ttf"; sourceTree = SOURCE_ROOT; };
+		11472F6427B7E9F2004404EF /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Bold.ttf"; path = "TheNewsCarlosCavalcanti/Shared/Font/Roboto-Bold.ttf"; sourceTree = SOURCE_ROOT; };
+		11472F6527B7E9F2004404EF /* Roboto-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-ThinItalic.ttf"; path = "TheNewsCarlosCavalcanti/Shared/Font/Roboto-ThinItalic.ttf"; sourceTree = SOURCE_ROOT; };
+		11472F6627B7E9F2004404EF /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Regular.ttf"; path = "TheNewsCarlosCavalcanti/Shared/Font/Roboto-Regular.ttf"; sourceTree = SOURCE_ROOT; };
+		11472F6727B7E9F2004404EF /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Thin.ttf"; path = "TheNewsCarlosCavalcanti/Shared/Font/Roboto-Thin.ttf"; sourceTree = SOURCE_ROOT; };
+		11472F6827B7E9F2004404EF /* Roboto-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Italic.ttf"; path = "TheNewsCarlosCavalcanti/Shared/Font/Roboto-Italic.ttf"; sourceTree = SOURCE_ROOT; };
+		11472F6927B7E9F2004404EF /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Light.ttf"; path = "TheNewsCarlosCavalcanti/Shared/Font/Roboto-Light.ttf"; sourceTree = SOURCE_ROOT; };
+		11472F7627B7EA5F004404EF /* TNStyleGuideFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNStyleGuideFont.swift; sourceTree = "<group>"; };
+		11472F7827B7ECBB004404EF /* UILabel+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extensions.swift"; sourceTree = "<group>"; };
 		1192A07B27B53B9C00F2BA3E /* TheNewsCarlosCavalcanti.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheNewsCarlosCavalcanti.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1192A07E27B53B9C00F2BA3E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1192A08027B53B9C00F2BA3E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -117,6 +145,42 @@
 			path = ListNewsFirstTableViewCell;
 			sourceTree = "<group>";
 		};
+		11472F5B27B7E854004404EF /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				11472F7527B7EA49004404EF /* StyleGuide */,
+				11472F5E27B7E9D7004404EF /* Font */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		11472F5E27B7E9D7004404EF /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				11472F6027B7E9F1004404EF /* Roboto-Black.ttf */,
+				11472F6227B7E9F1004404EF /* Roboto-BlackItalic.ttf */,
+				11472F6427B7E9F2004404EF /* Roboto-Bold.ttf */,
+				11472F6127B7E9F1004404EF /* Roboto-BoldItalic.ttf */,
+				11472F6827B7E9F2004404EF /* Roboto-Italic.ttf */,
+				11472F6927B7E9F2004404EF /* Roboto-Light.ttf */,
+				11472F6327B7E9F2004404EF /* Roboto-Medium.ttf */,
+				11472F5F27B7E9F1004404EF /* Roboto-MediumItalic.ttf */,
+				11472F6627B7E9F2004404EF /* Roboto-Regular.ttf */,
+				11472F6727B7E9F2004404EF /* Roboto-Thin.ttf */,
+				11472F6527B7E9F2004404EF /* Roboto-ThinItalic.ttf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
+		11472F7527B7EA49004404EF /* StyleGuide */ = {
+			isa = PBXGroup;
+			children = (
+				11472F5C27B7E86B004404EF /* TNStyleGuide.swift */,
+				11472F7627B7EA5F004404EF /* TNStyleGuideFont.swift */,
+			);
+			path = StyleGuide;
+			sourceTree = "<group>";
+		};
 		1192A07227B53B9C00F2BA3E = {
 			isa = PBXGroup;
 			children = (
@@ -142,6 +206,7 @@
 		1192A07D27B53B9C00F2BA3E /* TheNewsCarlosCavalcanti */ = {
 			isa = PBXGroup;
 			children = (
+				11472F5B27B7E854004404EF /* Shared */,
 				1192A0AE27B53CA200F2BA3E /* Modules */,
 				1192A07E27B53B9C00F2BA3E /* AppDelegate.swift */,
 				1192A08027B53B9C00F2BA3E /* SceneDelegate.swift */,
@@ -263,6 +328,7 @@
 			children = (
 				1192A0BF27B549C000F2BA3E /* UIView+Extensions.swift */,
 				11472F5627B729E7004404EF /* ImageKit.swift */,
+				11472F7827B7ECBB004404EF /* UILabel+Extensions.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -400,7 +466,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				1192A08B27B53BA000F2BA3E /* LaunchScreen.storyboard in Resources */,
+				11472F7327B7E9F3004404EF /* Roboto-Italic.ttf in Resources */,
+				11472F6D27B7E9F3004404EF /* Roboto-BlackItalic.ttf in Resources */,
+				11472F7127B7E9F3004404EF /* Roboto-Regular.ttf in Resources */,
+				11472F6A27B7E9F3004404EF /* Roboto-MediumItalic.ttf in Resources */,
+				11472F7227B7E9F3004404EF /* Roboto-Thin.ttf in Resources */,
+				11472F6E27B7E9F3004404EF /* Roboto-Medium.ttf in Resources */,
 				1192A08827B53BA000F2BA3E /* Assets.xcassets in Resources */,
+				11472F6C27B7E9F3004404EF /* Roboto-BoldItalic.ttf in Resources */,
+				11472F7427B7E9F3004404EF /* Roboto-Light.ttf in Resources */,
+				11472F7027B7E9F3004404EF /* Roboto-ThinItalic.ttf in Resources */,
+				11472F6F27B7E9F3004404EF /* Roboto-Bold.ttf in Resources */,
+				11472F6B27B7E9F3004404EF /* Roboto-Black.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -529,6 +606,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				11472F5727B729E7004404EF /* ImageKit.swift in Sources */,
+				11472F7727B7EA5F004404EF /* TNStyleGuideFont.swift in Sources */,
 				1192A0C027B549C000F2BA3E /* UIView+Extensions.swift in Sources */,
 				11472F5327B71672004404EF /* ListNewsPresenter.swift in Sources */,
 				1192A0C427B5D6D000F2BA3E /* ListNewsInteractor.swift in Sources */,
@@ -536,8 +614,10 @@
 				1192A08327B53B9C00F2BA3E /* ViewController.swift in Sources */,
 				1192A07F27B53B9C00F2BA3E /* AppDelegate.swift in Sources */,
 				1192A0C227B5D56D00F2BA3E /* NewsListEntity.swift in Sources */,
+				11472F5D27B7E86B004404EF /* TNStyleGuide.swift in Sources */,
 				1192A0BA27B53F8000F2BA3E /* NewsListViewController.swift in Sources */,
 				11472F5527B71D24004404EF /* NewsListRouter.swift in Sources */,
+				11472F7927B7ECBB004404EF /* UILabel+Extensions.swift in Sources */,
 				1192A0BD27B5421F00F2BA3E /* ListNewsTableViewCell.swift in Sources */,
 				1192A08127B53B9C00F2BA3E /* SceneDelegate.swift in Sources */,
 				11472F5A27B73AA4004404EF /* ListNewsFirstTableViewCell.swift in Sources */,
