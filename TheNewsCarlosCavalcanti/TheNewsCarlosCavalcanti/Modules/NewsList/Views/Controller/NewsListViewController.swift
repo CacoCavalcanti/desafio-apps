@@ -21,6 +21,14 @@ final class NewsListViewController: UIViewController {
         return table
     }()
     
+    lazy var indicatorView: UIActivityIndicatorView = {
+        let view = UIActivityIndicatorView(style: .medium)
+        view.color = .gray
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
+        return view
+    }()
+    
     // MARK: - Public Properties
     
     var presenter: NewsListViewToPresenterProtocol?
@@ -29,9 +37,9 @@ final class NewsListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter?.updateView()
-        setupTableView()
-        setupConstraints()
+        view.backgroundColor = .white
+        
+        fetchNews()
         setupNavigationController()
     }
     
@@ -65,12 +73,13 @@ private extension NewsListViewController {
         
         newsTableView.register(ListNewsTableViewCell.self, forCellReuseIdentifier: "ListNewsTableViewCell")
         newsTableView.register(ListNewsFirstTableViewCell.self, forCellReuseIdentifier: "ListNewsFirstTableViewCell")
-        self.view.addSubview(newsTableView)
-    }
-    
-    func setupConstraints() {
+        
         newsTableView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
         
+        setupTableViewConstraints()
+    }
+    
+    func setupTableViewConstraints() {
         NSLayoutConstraint.activate([
             newsTableView.topAnchor.constraint(equalTo: view.topAnchor),
             newsTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
@@ -78,6 +87,21 @@ private extension NewsListViewController {
             newsTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             newsTableView.heightAnchor.constraint(equalToConstant: self.view.frame.height)
         ])
+    }
+    
+    func setupIndicatorView() {
+        view.addSubview(indicatorView)
+        indicatorView.startAnimating()
+        
+        NSLayoutConstraint.activate([
+            indicatorView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            indicatorView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
+    }
+    
+    func fetchNews() {
+        setupIndicatorView()
+        presenter?.updateView()
     }
 }
 
@@ -118,17 +142,21 @@ extension NewsListViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension NewsListViewController: NewsListPresenterToViewProtocol {
     func showNews() {
+        view.addSubview(newsTableView)
+        indicatorView.removeFromSuperview()
+        setupTableView()
         newsTableView.reloadData()
     }
     
     func showError() {
+        indicatorView.removeFromSuperview()
         let title = "Ocorreu um erro"
         let message = "Não foi possível carregar as notícias. Verifique sua conexão e tente novamente."
         UIAlertController.showTryAgainAlert(withTitle: title,
                                             message: message,
                                             forViewController: self,
                                             dismissHandler: nil,
-                                            tryAgain: { [weak self] _ in self?.presenter?.updateView() },
+                                            tryAgain: { [weak self] _ in self?.fetchNews() },
                                             dismissMessage: "OK")
     }
 }
