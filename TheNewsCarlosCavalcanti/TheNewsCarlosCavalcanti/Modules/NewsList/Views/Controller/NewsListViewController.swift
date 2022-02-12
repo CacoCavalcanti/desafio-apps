@@ -15,9 +15,9 @@ final class NewsListViewController: UIViewController {
     private var newsTableView: UITableView = {
         let table = UITableView()
         table.translatesAutoresizingMaskIntoConstraints = false
-        table.register(ListNewsTableViewCell.self, forCellReuseIdentifier: "ListNewsTableViewCell")
         table.rowHeight = UITableView.automaticDimension
         table.tableFooterView = UIView(frame: .zero)
+        
         return table
     }()
     
@@ -43,6 +43,9 @@ private extension NewsListViewController {
     func setupTableView() {
         newsTableView.dataSource = self
         newsTableView.delegate = self
+        
+        newsTableView.register(ListNewsTableViewCell.self, forCellReuseIdentifier: "ListNewsTableViewCell")
+        newsTableView.register(ListNewsFirstTableViewCell.self, forCellReuseIdentifier: "ListNewsFirstTableViewCell")
         self.view.addSubview(newsTableView)
     }
     
@@ -53,6 +56,7 @@ private extension NewsListViewController {
         newsTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
         newsTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
         newsTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
+        newsTableView.heightAnchor.constraint(equalToConstant: self.view.frame.height).isActive = true
     }
 }
 
@@ -65,13 +69,25 @@ extension NewsListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ListNewsTableViewCell") as? ListNewsTableViewCell,
-              let newsModel = presenter?.getNews(index: indexPath.row) else {
-                  return UITableViewCell()
-              }
-        
-        cell.setup(with: newsModel)
-        return cell
+        switch indexPath.row {
+        case 0:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "ListNewsFirstTableViewCell") as? ListNewsFirstTableViewCell,
+                  let newsModel = presenter?.getNews(index: indexPath.row) else {
+                      return UITableViewCell()
+                  }
+            
+            cell.setup(with: newsModel)
+            return cell
+            
+        default:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "ListNewsTableViewCell") as? ListNewsTableViewCell,
+                  let newsModel = presenter?.getNews(index: indexPath.row) else {
+                      return UITableViewCell()
+                  }
+            
+            cell.setup(with: newsModel)
+            return cell
+        }
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {

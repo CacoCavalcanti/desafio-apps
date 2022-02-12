@@ -16,7 +16,6 @@ final class ListNewsTableViewCell: UITableViewCell {
         let image = UIImageView()
         image.contentMode = .scaleAspectFit
         image.clipsToBounds = true
-        image.backgroundColor = .white
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
@@ -98,9 +97,6 @@ extension ListNewsTableViewCell {
     // MARK: - View Configuration
     
     func setup(with news: NewsModel) {
-        
-        setupViews()
-        setupConstraints()
         let image = news.images.first
         newsImageView.setImage(fromURL: image?.url)
         newsSection.text = news.section.name
