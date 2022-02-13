@@ -9,20 +9,23 @@ import Foundation
 import UIKit
 
 final class NewsListRouter: NewsListPresenterToRouterProtocol {
+    var viewController: UIViewController?
     
-    class func createModule() -> UIViewController {
-        
+    func createModule() -> UIViewController {
         let view = NewsListViewController()
-        let presenter: NewsListViewToPresenterProtocol & NewsListInteractorToPresenterProtocol = ListNewsPresenter()
-        let interactor: NewsListPresentorToInteractorProtocol = ListNewsInteractor()
+        viewController = view
         let router: NewsListPresenterToRouterProtocol = NewsListRouter()
-        
+        let presenter: NewsListViewToPresenterProtocol & NewsListInteractorToPresenterProtocol = ListNewsPresenter(view: view, router: router)
+        let interactor: NewsListPresenterToInteractorProtocol = ListNewsInteractor(presenter: presenter)
+       
         view.presenter = presenter
-        presenter.view = view
-        presenter.router = router
-        presenter.interactor = interactor
-        interactor.presenter = presenter
+        presenter.interactor = interactor 
         
         return view
+    }
+    
+    func showNewsDetails(from controller: UINavigationController, with news: NewsModel) {
+        let newsDetails = NewsDetailsRouter.createModule(news: news)
+        controller.pushViewController(newsDetails, animated: true)
     }
 }

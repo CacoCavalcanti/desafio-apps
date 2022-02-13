@@ -5,7 +5,6 @@
 //  Created by Carlos Roberto Cavalcanti on 11/02/22.
 //
 
-import Foundation
 import UIKit
 
 final class ListNewsFirstTableViewCell: UITableViewCell {
@@ -20,7 +19,7 @@ final class ListNewsFirstTableViewCell: UITableViewCell {
         return image
     }()
     
-    private lazy var newsSection: UILabel = {
+    private lazy var newsSectionLabel: UILabel = {
         let label = UILabel()
         label.configure(style: .newsListCoverSection, color: TNStyleGuide.Color.white)
         label.textAlignment = .center
@@ -65,7 +64,7 @@ private extension ListNewsFirstTableViewCell {
     // MARK: - PRivate Methods
     
     func setupViews() {
-        addSubviews(newsImageView, newsSection, newsTitleLabel)
+        addSubviews(newsImageView, newsSectionLabel, newsTitleLabel)
     }
     
     func setupConstraints() {
@@ -87,14 +86,14 @@ private extension ListNewsFirstTableViewCell {
         ])
         
         NSLayoutConstraint.activate([
-            newsSection.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor),
-            newsSection.bottomAnchor.constraint(equalTo: newsTitleLabel.topAnchor, constant: -8),
-            newsSection.leadingAnchor.constraint(greaterThanOrEqualTo: newsImageView.trailingAnchor, constant: 32),
-            newsSection.trailingAnchor.constraint(greaterThanOrEqualTo: newsImageView.trailingAnchor, constant: -32)
+            newsSectionLabel.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor),
+            newsSectionLabel.bottomAnchor.constraint(equalTo: newsTitleLabel.topAnchor, constant: -8),
+            newsSectionLabel.leadingAnchor.constraint(greaterThanOrEqualTo: newsImageView.trailingAnchor, constant: 32),
+            newsSectionLabel.trailingAnchor.constraint(greaterThanOrEqualTo: newsImageView.trailingAnchor, constant: -32)
         ])
         
-        newsSection.setContentHuggingPriority(.defaultHigh, for: .horizontal)
-        newsSection.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+        newsSectionLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        newsSectionLabel.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
     }
     
     func makeGradient(from frame: CGRect) {
@@ -115,7 +114,7 @@ extension ListNewsFirstTableViewCell {
     func setup(with news: NewsModel) {
         let image = news.images.first
         newsImageView.setImage(fromURL: image?.url)
-        newsSection.text = news.section.name
+        newsSectionLabel.text = news.section.name
         newsTitleLabel.text = news.title
     }
 }

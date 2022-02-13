@@ -12,7 +12,7 @@ final class NewsListViewController: UIViewController {
    
     // MARK: - Private Proprieties
     
-    private var newsTableView: UITableView = {
+    private lazy var newsTableView: UITableView = {
         let table = UITableView()
         table.translatesAutoresizingMaskIntoConstraints = false
         table.rowHeight = UITableView.automaticDimension
@@ -21,7 +21,7 @@ final class NewsListViewController: UIViewController {
         return table
     }()
     
-    lazy var indicatorView: UIActivityIndicatorView = {
+    private lazy var indicatorView: UIActivityIndicatorView = {
         let view = UIActivityIndicatorView(style: .medium)
         view.color = .gray
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -56,7 +56,7 @@ private extension NewsListViewController {
     
     func setupNavigationController() {
         navigationController?.navigationBar.isHidden = false
-        navigationController?.setupSunriseNavigationBar(controller: self)
+        navigationController?.setupNavigationBar(controller: self)
         navigationItem.title = "The News"
         
         let barsImage = UIImage.TNImage.sandwichBars
@@ -136,7 +136,13 @@ extension NewsListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return indexPath.row == 0 ? 250 : 100
+        return indexPath.row == 0 ? 250 : 80
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let news = presenter?.getNews(index: indexPath.row),
+              let navigation = self.navigationController else { return }
+        presenter?.showNewsDetails(controller: navigation, with: news)
     }
 }
 

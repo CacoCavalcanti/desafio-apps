@@ -20,10 +20,11 @@ final class ListNewsTableViewCell: UITableViewCell {
         return image
     }()
     
-    private lazy var newsSection: UILabel = {
+    private lazy var newsSectionLabel: UILabel = {
         let label = UILabel()
         label.configure(style: .newsListSection, color: TNStyleGuide.Color.grayActionColor)
         label.textAlignment = .left
+        label.numberOfLines = 1
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -33,7 +34,7 @@ final class ListNewsTableViewCell: UITableViewCell {
         label.configure(style: .newsListTitle, color: TNStyleGuide.Color.boldBlue)
         label.textAlignment = .left
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.numberOfLines = 0
+        label.numberOfLines = 2
         label.lineBreakMode = .byWordWrapping
         return label
     }()
@@ -56,7 +57,7 @@ private extension ListNewsTableViewCell {
     // MARK: - PRivate Methods
     
     func setupViews() {
-        addSubviews(newsImageView, newsSection, newsTitleLabel)
+        addSubviews(newsImageView, newsSectionLabel, newsTitleLabel)
     }
     
     func setupConstraints() {
@@ -70,14 +71,14 @@ private extension ListNewsTableViewCell {
         ])
         
         NSLayoutConstraint.activate([
-            newsSection.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 8),
-            newsSection.leadingAnchor.constraint(equalTo: newsImageView.trailingAnchor, constant: 16),
-            newsSection.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -16)
+            newsSectionLabel.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 8),
+            newsSectionLabel.leadingAnchor.constraint(equalTo: newsImageView.trailingAnchor, constant: 16),
+            newsSectionLabel.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -16)
             
         ])
         
         NSLayoutConstraint.activate([
-            newsTitleLabel.topAnchor.constraint(equalTo: newsSection.bottomAnchor, constant: 4),
+            newsTitleLabel.topAnchor.constraint(equalTo: newsSectionLabel.bottomAnchor, constant: 4),
             newsTitleLabel.leadingAnchor.constraint(equalTo: newsImageView.trailingAnchor, constant: 16),
             newsTitleLabel.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -16),
             newsTitleLabel.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -8)
@@ -92,7 +93,7 @@ extension ListNewsTableViewCell {
     func setup(with news: NewsModel) {
         let image = news.images.first
         newsImageView.setImage(fromURL: image?.url)
-        newsSection.text = news.section.name.uppercased()
+        newsSectionLabel.text = news.section.name.uppercased()
         newsTitleLabel.text = news.title
     }
 }

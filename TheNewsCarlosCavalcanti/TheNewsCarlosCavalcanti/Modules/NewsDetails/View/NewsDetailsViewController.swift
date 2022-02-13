@@ -1,0 +1,138 @@
+//
+//  NewsDetailsViewController.swift
+//  TheNewsCarlosCavalcanti
+//
+//  Created by Carlos Roberto Cavalcanti on 13/02/22.
+//
+
+import Foundation
+import UIKit
+
+protocol NewsDetailsViewControllerProtocol {
+    func reloadData()
+}
+
+final class NewsDetailsViewController: UIViewController {
+    
+    // MARK: - Private Proprieties
+    
+    private var tableView: UITableView = {
+        let table = UITableView()
+        table.translatesAutoresizingMaskIntoConstraints = false
+        table.rowHeight = UITableView.automaticDimension
+        table.tableFooterView = UIView(frame: .zero)
+        
+        return table
+    }()
+        
+    var presenter: NewsDetailsPresenterProtocol?
+    
+    // MARK: - Life Cicle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .white
+        
+        setupNavigationController()
+        setupViews()
+        setupTableView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.isNavigationBarHidden = false
+        self.navigationItem.backButtonTitle = ""
+        self.navigationItem.backButtonDisplayMode = .minimal
+    }
+}
+
+private extension NewsDetailsViewController {
+    
+    func setupNavigationController() {
+        navigationController?.navigationBar.isHidden = false
+        navigationController?.setupNavigationBar(controller: self)
+        navigationItem.title = presenter?.news?.section.name
+    
+        let shareButton: UIBarButtonItem = UIBarButtonItem.init(barButtonSystemItem:.action, target: self, action: Selector(("userDidTapShare")))
+        self.navigationItem.rightBarButtonItem = shareButton
+    }
+    
+    func setupViews() {
+        view.addSubview(tableView)
+    }
+    
+    func setupTableView() {
+        tableView.dataSource = self
+        tableView.delegate = self
+        
+        tableView.register(NewsDetailsTitleTableViewCell.self, forCellReuseIdentifier: "NewsDetailsTitleTableViewCell")
+        tableView.register(NewsDetailsImageTableViewCell.self, forCellReuseIdentifier: "NewsDetailsImageTableViewCell")
+        tableView.register(NewsDetailsTextTableViewCell.self, forCellReuseIdentifier: "NewsDetailsTextTableViewCell")
+        
+        tableView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+        
+        setupTableViewConstraints()
+    }
+    
+    func setupTableViewConstraints() {
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: view.topAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tableView.heightAnchor.constraint(equalToConstant: self.view.frame.height)
+        ])
+    }
+}
+
+extension NewsDetailsViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    // MARK: - UITableViewDelegate
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return presenter?.getCellsNumber() ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let news = presenter?.getNews() else { return UITableViewCell() }
+        
+        switch indexPath.row {
+        case 0:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "NewsDetailsTitleTableViewCell") as? NewsDetailsTitleTableViewCell else {
+                      return UITableViewCell()
+                  }
+            
+            cell.setup(with: news)
+            return cell
+            
+        case 1:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "NewsDetailsImageTableViewCell") as? NewsDetailsImageTableViewCell else {
+                      return UITableViewCell()
+                  }
+            
+            cell.setup(with: news)
+            return cell
+            
+        default:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "NewsDetailsTextTableViewCell") as? NewsDetailsTextTableViewCell else {
+                      return UITableViewCell()
+                  }
+            
+            cell.setup(with: news)
+            return cell
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
+}
+
+extension NewsDetailsViewController: NewsDetailsViewControllerProtocol {
+    func reloadData() {
+        tableView.reloadData()
+    }
+    
+    
+}

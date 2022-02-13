@@ -13,9 +13,10 @@ extension UINavigationController {
         self.navigationBar.isTranslucent = false
     }
     
-    func setupSunriseNavigationBar(controller: UIViewController, shouldRemoveBackItem: Bool = false) {
+    func setupNavigationBar(controller: UIViewController, shouldRemoveBackItem: Bool = false) {
         self.navigationBar.setupAppearanceBar()
         self.setupAppearanceController(viewController: controller)
+        navigationItem.backButtonDisplayMode = .minimal
         guard shouldRemoveBackItem else { return }
         navigationItem.rightBarButtonItems?.removeAll()
     }

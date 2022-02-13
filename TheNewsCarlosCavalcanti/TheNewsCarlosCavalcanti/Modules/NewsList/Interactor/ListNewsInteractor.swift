@@ -8,13 +8,17 @@
 import Foundation
 import Alamofire
 
-final class ListNewsInteractor: NewsListPresentorToInteractorProtocol {
+final class ListNewsInteractor: NewsListPresenterToInteractorProtocol {
     
     // MARK: - Properties
     
-    var presenter: NewsListInteractorToPresenterProtocol?
+    weak var presenter: NewsListInteractorToPresenterProtocol?
     private(set) var news: [NewsModel]?
     private let url = "https://raw.githubusercontent.com/Infoglobo/desafio-apps/master/capa.json"
+    
+    init(presenter: NewsListInteractorToPresenterProtocol) {
+        self.presenter = presenter
+    }
     
     // MARK: - Methods
     
