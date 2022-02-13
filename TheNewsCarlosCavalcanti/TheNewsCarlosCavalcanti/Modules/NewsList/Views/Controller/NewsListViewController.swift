@@ -17,7 +17,7 @@ final class NewsListViewController: UIViewController {
         table.translatesAutoresizingMaskIntoConstraints = false
         table.rowHeight = UITableView.automaticDimension
         table.tableFooterView = UIView(frame: .zero)
-        
+        table.separatorStyle = .none
         return table
     }()
     

@@ -10,13 +10,15 @@ import UIKit
 
 final class NewsDetailsTextTableViewCell: UITableViewCell {
     
+    // MARK: - Private Proprieties
+    
     private lazy var newsTextLabel: UILabel = {
         let label = UILabel()
-        label.configure(style: .newsListTitle, color: TNStyleGuide.Color.boldBlue)
         label.textAlignment = .left
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
+        label.configure(style: .detailsText, color: TNStyleGuide.Color.boldBlue)
         return label
     }()
     
@@ -35,6 +37,8 @@ final class NewsDetailsTextTableViewCell: UITableViewCell {
 
 private extension NewsDetailsTextTableViewCell {
     
+    // MARK: - Private Methods
+    
     func setupViews() {
         addSubviews(newsTextLabel)
     }
@@ -43,16 +47,18 @@ private extension NewsDetailsTextTableViewCell {
         let safeArea = self.safeAreaLayoutGuide
         
         NSLayoutConstraint.activate([
-            newsTextLabel.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 32),
+            newsTextLabel.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 16),
             newsTextLabel.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 16),
-            newsTextLabel.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: 16),
+            newsTextLabel.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -16),
             newsTextLabel.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor)
         ])
-        
     }
 }
 
 extension NewsDetailsTextTableViewCell {
+    
+    // MARK: - Public Methods
+    
     func setup(with news: NewsModel) {
         newsTextLabel.text = news.text
     }

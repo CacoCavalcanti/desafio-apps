@@ -42,6 +42,11 @@ enum StyleGuideTextStyle: Equatable {
     case newsListTitle
     case newsListCoverTitle
     case newsListCoverSection
+    case detailsImageSubtitle
+    case detailsText
+    case detailsTitle
+    case detailsSubtitle
+    case newsInfo
     
     var font: UIFont {
         switch self {
@@ -53,6 +58,16 @@ enum StyleGuideTextStyle: Equatable {
             return StyleGuideFont.bold(size: 20)
         case .newsListTitle:
             return StyleGuideFont.black(size: 16)
+        case .detailsTitle:
+            return StyleGuideFont.black(size: 22)
+        case .detailsSubtitle:
+            return StyleGuideFont.bold(size: 18)
+        case .newsInfo:
+            return StyleGuideFont.light(size: 14)
+        case .detailsImageSubtitle:
+            return StyleGuideFont.regular(size: 12)
+        case .detailsText:
+            return StyleGuideFont.regular(size: 18)
         }
     }
     

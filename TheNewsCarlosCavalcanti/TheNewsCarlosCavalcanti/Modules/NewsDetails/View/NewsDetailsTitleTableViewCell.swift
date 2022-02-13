@@ -10,17 +10,20 @@ import UIKit
 
 final class NewsDetailsTitleTableViewCell: UITableViewCell {
     
+    // MARK: - Private Proprieties
+    
     private lazy var newsTitleLabel: UILabel = {
         let label = UILabel()
-        label.configure(style: .newsListCoverTitle, color: TNStyleGuide.Color.boldBlue)
+        label.configure(style: .detailsTitle, color: TNStyleGuide.Color.boldBlue)
         label.textAlignment = .center
+        label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     private lazy var newsSubtitleLabel: UILabel = {
         let label = UILabel()
-        label.configure(style: .newsListTitle, color: TNStyleGuide.Color.boldBlue)
+        label.configure(style: .detailsSubtitle, color: TNStyleGuide.Color.boldBlue)
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
@@ -30,10 +33,11 @@ final class NewsDetailsTitleTableViewCell: UITableViewCell {
     
     private lazy var newsDetailsLabel: UILabel = {
         let label = UILabel()
-        label.textAlignment = .left
+        label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
+        label.configure(style: .newsInfo, color: TNStyleGuide.Color.boldBlue)
         return label
     }()
     
@@ -52,7 +56,7 @@ final class NewsDetailsTitleTableViewCell: UITableViewCell {
 
 private extension NewsDetailsTitleTableViewCell {
     
-    // MARK: - PRivate Methods
+    // MARK: - Private Methods
     
     func setupViews() {
         addSubviews(newsTitleLabel, newsSubtitleLabel, newsDetailsLabel)
@@ -62,34 +66,35 @@ private extension NewsDetailsTitleTableViewCell {
         let safeArea = self.safeAreaLayoutGuide
         
         NSLayoutConstraint.activate([
-            newsTitleLabel.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 32),
-            newsTitleLabel.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 32),
-            newsTitleLabel.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: 32)
+            newsTitleLabel.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 16),
+            newsTitleLabel.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 16),
+            newsTitleLabel.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -16)
         ])
         
         NSLayoutConstraint.activate([
-            newsSubtitleLabel.topAnchor.constraint(equalTo: newsTitleLabel.topAnchor, constant: 16),
+            newsSubtitleLabel.topAnchor.constraint(equalTo: newsTitleLabel.bottomAnchor, constant: 8),
             newsSubtitleLabel.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 32),
-            newsSubtitleLabel.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: 32)
+            newsSubtitleLabel.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -32)
         ])
         
         NSLayoutConstraint.activate([
-            newsDetailsLabel.topAnchor.constraint(equalTo: newsSubtitleLabel.topAnchor, constant: 32),
+            newsDetailsLabel.topAnchor.constraint(equalTo: newsSubtitleLabel.bottomAnchor, constant: 16),
             newsDetailsLabel.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 32),
-            newsDetailsLabel.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: 32)
+            newsDetailsLabel.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -32),
+            newsDetailsLabel.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -8)
         ])
     }
-    
 }
 
 extension NewsDetailsTitleTableViewCell {
     
-    // MARK: - View Configuration
+    // MARK: - Public methods
     
     func setup(with news: NewsModel) {
-        let image = news.images.first
         newsTitleLabel.text = news.title
         newsSubtitleLabel.text = news.subTitle
-        newsDetailsLabel.text = news.releaseDate
+        
+        let newsInfo = "Por O GLOBO\n\(news.releaseDate)"
+        newsDetailsLabel.text = newsInfo
     }
 }

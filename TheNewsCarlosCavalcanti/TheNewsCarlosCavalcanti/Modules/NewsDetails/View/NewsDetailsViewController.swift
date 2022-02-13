@@ -20,6 +20,7 @@ final class NewsDetailsViewController: UIViewController {
         let table = UITableView()
         table.translatesAutoresizingMaskIntoConstraints = false
         table.rowHeight = UITableView.automaticDimension
+        table.estimatedRowHeight = UITableView.automaticDimension
         table.tableFooterView = UIView(frame: .zero)
         
         return table
@@ -47,6 +48,8 @@ final class NewsDetailsViewController: UIViewController {
 }
 
 private extension NewsDetailsViewController {
+    
+    // MARK: - Private Methods
     
     func setupNavigationController() {
         navigationController?.navigationBar.isHidden = false
@@ -123,16 +126,20 @@ extension NewsDetailsViewController: UITableViewDelegate, UITableViewDataSource 
         }
     }
     
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch indexPath.row {
+        case 0:
+            return 200
+        case 1:
+            return 250
+        default:
+            return UITableView.automaticDimension
+        }
     }
-    
 }
 
 extension NewsDetailsViewController: NewsDetailsViewControllerProtocol {
     func reloadData() {
         tableView.reloadData()
     }
-    
-    
 }
