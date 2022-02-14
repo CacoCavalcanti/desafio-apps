@@ -8,9 +8,6 @@
 import UIKit
 
 extension UIButton {
-    /// - Parameters:
-    ///   - color: UIColor to be used as background color.
-    ///   - state: UIControlState to set the background color.
     public func setBackgroundColor(_ color: UIColor, for state: UIControl.State) {
         self.backgroundColor = color
     }
