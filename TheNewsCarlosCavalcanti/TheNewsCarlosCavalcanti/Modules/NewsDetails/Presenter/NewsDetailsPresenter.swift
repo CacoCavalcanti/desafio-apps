@@ -10,6 +10,7 @@ protocol NewsDetailsPresenterProtocol {
 
     func getCellsNumber() -> Int
     func getNews() -> NewsModel?
+    func didTapShareButton()
 }
 
 final class NewsDetailsPresenter: NewsDetailsPresenterProtocol {
@@ -30,4 +31,11 @@ final class NewsDetailsPresenter: NewsDetailsPresenterProtocol {
         return news
     }
     
+    func didTapShareButton() {
+        guard let url = news?.originalURL else {
+            view?.showError()
+            return
+        }
+        view?.showShareOptions(for: url)
+    }
 }

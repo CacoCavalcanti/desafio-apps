@@ -9,6 +9,8 @@ import UIKit
 
 protocol NewsDetailsViewControllerProtocol {
     func reloadData()
+    func showShareOptions(for url: String)
+    func showError()
 }
 
 final class NewsDetailsViewController: UIViewController {
@@ -55,7 +57,7 @@ private extension NewsDetailsViewController {
         navigationController?.setupNavigationBar(controller: self)
         navigationItem.title = presenter?.news?.section.name
     
-        let shareButton: UIBarButtonItem = UIBarButtonItem.init(barButtonSystemItem:.action, target: self, action: Selector(("userDidTapShare")))
+        let shareButton: UIBarButtonItem = UIBarButtonItem.init(barButtonSystemItem:.action, target: self, action: #selector(didTapShareButton))
         self.navigationItem.rightBarButtonItem = shareButton
     }
     
@@ -84,6 +86,10 @@ private extension NewsDetailsViewController {
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.heightAnchor.constraint(equalToConstant: self.view.frame.height)
         ])
+    }
+    
+    @objc func didTapShareButton() {
+        presenter?.didTapShareButton()
     }
 }
 
@@ -140,5 +146,20 @@ extension NewsDetailsViewController: UITableViewDelegate, UITableViewDataSource 
 extension NewsDetailsViewController: NewsDetailsViewControllerProtocol {
     func reloadData() {
         tableView.reloadData()
+    }
+    
+    func showShareOptions(for url: String) {
+        let activityController = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+        self.present(activityController, animated: true, completion: nil)
+    }
+    
+    func showError() {
+        let title = "Ocorreu um erro"
+        let message = "Ocorreu um erro. Por favor, tente novamente."
+        UIAlertController.showGenericOneOptionAlert(onViewController: self,
+                                                    title: title,
+                                                    message: message,
+                                                    optionButtonText: "ok",
+                                                    optionHandler: nil)
     }
 }

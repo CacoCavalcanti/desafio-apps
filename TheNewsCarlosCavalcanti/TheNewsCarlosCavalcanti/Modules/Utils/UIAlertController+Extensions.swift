@@ -21,4 +21,14 @@ extension UIAlertController {
                                       handler: tryAgain))
         viewController.present(alert, animated: true, completion: nil)
     }
+    
+    static func showGenericOneOptionAlert(onViewController viewController: UIViewController, title: String? = nil, message: String, optionButtonText: String, optionHandler: ((UIAlertAction) -> Swift.Void)? = nil) {
+        let alert = UIAlertController(title: title,
+                                      message: message,
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: optionButtonText.uppercased(),
+                                      style: .default,
+                                      handler: optionHandler))
+        viewController.present(alert, animated: true, completion: nil)
+    }
 }
