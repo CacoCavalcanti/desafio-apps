@@ -94,8 +94,9 @@ extension NewsDetailsTitleTableViewCell {
     func setup(with news: NewsModel) {
         newsTitleLabel.text = news.title
         newsSubtitleLabel.text = news.subTitle
+        let releaseDate = Date.create(byTimeStamp: news.releaseDate)
         
-        let newsInfo = "Por O GLOBO\n\(news.releaseDate)"
+        let newsInfo = "Por O GLOBO\n\(releaseDate)"
         newsDetailsLabel.text = newsInfo
     }
 }
