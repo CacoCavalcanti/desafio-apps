@@ -7,14 +7,15 @@
 
 @testable import TheNewsCarlosCavalcanti
 
-final class ListNewsInteractorMock: NewsListPresenterToInteractorProtocol {
-    var presenter: ListNewsPresenterDelegate?
+final class ListNewsInteractorMock: ListNewsInteractorProtocol {
     
+    var presenter: ListNewsPresenterDelegate?
     var news: [NewsModel]?
     
+    private(set) var hasCalledFetchNews: Bool = false
+    
     func fetchNews() {
-        presenter?.theNewsFetched()
+        presenter?.newsFetched([])
+        hasCalledFetchNews = true
     }
-    
-    
 }

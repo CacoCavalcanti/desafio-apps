@@ -10,16 +10,24 @@ import XCTest
 
 final class NewsListInteractorTests: XCTestCase {
     
+    var presenter: ListNewsPresenterMock!
+    var interactor: ListNewsInteractorMock!
+    
+    override func setUp() {
+        super.setUp()
+        presenter = ListNewsPresenterMock()
+        interactor = ListNewsInteractorMock()
+    }
+    
+    override func tearDown() {
+        super.tearDown()
+        presenter = nil
+        interactor = nil
+    }
+    
     func test_fetchNews() {
-        // given
-        let presenter = ListNewsPresenterMock()
-        let interactor = ListNewsInteractorMock()
         interactor.presenter = presenter
-        
-        // when
         interactor.fetchNews()
-        
-        // then
         XCTAssertTrue(presenter.hasCalledFetchedNews)
     }
 }
