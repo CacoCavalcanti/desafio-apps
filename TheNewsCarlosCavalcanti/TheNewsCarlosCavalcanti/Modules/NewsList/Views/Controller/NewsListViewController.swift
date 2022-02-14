@@ -7,6 +7,11 @@
 
 import UIKit
 
+protocol NewsListViewControllerProtocol {
+    func showNews()
+    func showError()
+}
+
 final class NewsListViewController: UIViewController {
    
     // MARK: - Private Proprieties
@@ -30,7 +35,7 @@ final class NewsListViewController: UIViewController {
     
     // MARK: - Public Properties
     
-    var presenter: NewsListViewToPresenterProtocol?
+    var presenter: ListNewsPresenterProtocol?
     
     // MARK: - Life Cicle
     
@@ -146,7 +151,7 @@ extension NewsListViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension NewsListViewController: NewsListPresenterToViewProtocol {
+extension NewsListViewController: NewsListViewControllerProtocol {
     func showNews() {
         view.addSubview(newsTableView)
         indicatorView.removeFromSuperview()

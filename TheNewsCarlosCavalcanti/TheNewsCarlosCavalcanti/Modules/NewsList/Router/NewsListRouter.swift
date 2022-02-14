@@ -19,7 +19,7 @@ final class NewsListRouter: NewsListRouterProtocol {
         let view = NewsListViewController()
         viewController = view
         let router: NewsListRouterProtocol = NewsListRouter()
-        let presenter: NewsListViewToPresenterProtocol & ListNewsPresenteDelegate = ListNewsPresenter(view: view, router: router)
+        var presenter: ListNewsPresenterProtocol & ListNewsPresenteDelegate = ListNewsPresenter(view: view, router: router)
         let interactor: ListNewsInteractorProtocol = ListNewsInteractor(presenter: presenter)
        
         view.presenter = presenter

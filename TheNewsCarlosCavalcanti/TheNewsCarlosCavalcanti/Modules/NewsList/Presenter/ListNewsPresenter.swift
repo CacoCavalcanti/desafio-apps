@@ -8,6 +8,10 @@
 import UIKit
 
 protocol ListNewsPresenterProtocol {
+    var view: NewsListViewControllerProtocol? { get set }
+    var interactor: ListNewsInteractorProtocol? { get set }
+    var router: NewsListRouterProtocol? { get set }
+    
     func updateView()
     func getNewsListCount() -> Int?
     func getNews(index: Int) -> NewsModel?
@@ -19,16 +23,16 @@ protocol ListNewsPresenteDelegate: AnyObject {
     func newsFetchedFailed()
 }
 
-final class ListNewsPresenter: NewsListViewToPresenterProtocol {
+final class ListNewsPresenter: ListNewsPresenterProtocol {
     
     // MARK: - Properties
     
-    var view: NewsListPresenterToViewProtocol?
+    var view: NewsListViewControllerProtocol?
     var interactor: ListNewsInteractorProtocol?
     var router: NewsListRouterProtocol?
     private var news: [NewsModel]?
     
-    init(view: NewsListPresenterToViewProtocol, router: NewsListRouterProtocol) {
+    init(view: NewsListViewControllerProtocol, router: NewsListRouterProtocol) {
         self.view = view
         self.router = router
     }
