@@ -5,7 +5,6 @@
 //  Created by Carlos Roberto Cavalcanti on 11/02/22.
 //
 
-import Foundation
 import SDWebImage
 
 // MARK: - Download Image
