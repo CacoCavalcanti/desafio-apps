@@ -17,8 +17,9 @@ final class NewsDetailsPresenter {
     
     // MARK: - Private Proprieties
     
-    var news: NewsModel?
-    var view: NewsDetailsViewControllerProtocol?
+    private(set) var news: NewsModel?
+    private(set) var view: NewsDetailsViewControllerProtocol?
+    private let numberOfCells = 3
     
     // MARK: - Init
     
@@ -33,7 +34,8 @@ extension NewsDetailsPresenter: NewsDetailsPresenterProtocol {
     // MARK: - Public Methods
     
     func getCellsNumber() -> Int {
-        return 3
+        guard news != nil else { return 0 }
+        return numberOfCells
     }
     
     func getNews() -> NewsModel? {
