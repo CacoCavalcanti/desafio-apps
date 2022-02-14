@@ -16,7 +16,7 @@ final class NewsListViewController: UIViewController {
    
     // MARK: - Private Proprieties
     
-    private lazy var newsTableView: UITableView = {
+    private lazy var tableView: UITableView = {
         let table = UITableView()
         table.translatesAutoresizingMaskIntoConstraints = false
         table.rowHeight = UITableView.automaticDimension
@@ -72,24 +72,24 @@ private extension NewsListViewController {
     }
     
     func setupTableView() {
-        newsTableView.dataSource = self
-        newsTableView.delegate = self
+        tableView.dataSource = self
+        tableView.delegate = self
         
-        newsTableView.register(ListNewsTableViewCell.self, forCellReuseIdentifier: "ListNewsTableViewCell")
-        newsTableView.register(ListNewsFirstTableViewCell.self, forCellReuseIdentifier: "ListNewsFirstTableViewCell")
+        tableView.register(cellClass: ListNewsTableViewCell.self)
+        tableView.register(cellClass: ListNewsFirstTableViewCell.self)
         
-        newsTableView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+        tableView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
         
         setupTableViewConstraints()
     }
     
     func setupTableViewConstraints() {
         NSLayoutConstraint.activate([
-            newsTableView.topAnchor.constraint(equalTo: view.topAnchor),
-            newsTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            newsTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            newsTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            newsTableView.heightAnchor.constraint(equalToConstant: self.view.frame.height)
+            tableView.topAnchor.constraint(equalTo: view.topAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tableView.heightAnchor.constraint(equalToConstant: self.view.frame.height)
         ])
     }
     
@@ -118,22 +118,16 @@ extension NewsListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch indexPath.row {
-        case 0:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "ListNewsFirstTableViewCell") as? ListNewsFirstTableViewCell,
-                  let newsModel = presenter?.getNews(index: indexPath.row) else {
-                      return UITableViewCell()
-                  }
-            
+        guard let newsModel = presenter?.getNews(index: indexPath.row),
+              let cellType = presenter?.getCellType(for: indexPath) else { return UITableViewCell() }
+        
+        switch cellType {
+        case is ListNewsFirstTableViewCell:
+            let cell = tableView.dequeue(cellClass: ListNewsFirstTableViewCell.self, forIndexPath: indexPath)
             cell.setup(with: newsModel)
             return cell
-            
         default:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "ListNewsTableViewCell") as? ListNewsTableViewCell,
-                  let newsModel = presenter?.getNews(index: indexPath.row) else {
-                      return UITableViewCell()
-                  }
-            
+            let cell = tableView.dequeue(cellClass: ListNewsTableViewCell.self, forIndexPath: indexPath)
             cell.setup(with: newsModel)
             return cell
         }
@@ -153,10 +147,10 @@ extension NewsListViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension NewsListViewController: NewsListViewControllerProtocol {
     func showNews() {
-        view.addSubview(newsTableView)
+        view.addSubview(tableView)
         indicatorView.removeFromSuperview()
         setupTableView()
-        newsTableView.reloadData()
+        tableView.reloadData()
     }
     
     func showError() {

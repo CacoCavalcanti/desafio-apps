@@ -16,6 +16,7 @@ protocol ListNewsPresenterProtocol {
     func getNewsListCount() -> Int?
     func getNews(index: Int) -> NewsModel?
     func showNewsDetails(controller: UINavigationController, with news: NewsModel)
+    func getCellType(for indexPath: IndexPath) -> UITableViewCell
 }
 
 protocol ListNewsPresenterDelegate: AnyObject {
@@ -55,6 +56,18 @@ final class ListNewsPresenter: ListNewsPresenterProtocol {
         router?.showNewsDetails(from: controller, with: news)
     }
     
+    func getCellType(for indexPath: IndexPath) -> UITableViewCell {
+        var details: NewsListCellType
+        
+        switch indexPath.row {
+        case 0:
+            details = .cover
+        default:
+            details = .list
+        }
+        return details.listCellType
+    }
+    
 }
 
 extension ListNewsPresenter: ListNewsPresenterDelegate {
@@ -65,6 +78,20 @@ extension ListNewsPresenter: ListNewsPresenterDelegate {
     
     func newsFetchedFailed() {
         view?.showError()
+    }
+}
+
+enum NewsListCellType {
+    case cover
+    case list
+    
+    var listCellType: UITableViewCell {
+        switch self {
+        case .cover:
+            return ListNewsFirstTableViewCell()
+        case .list:
+            return ListNewsTableViewCell()
+        }
     }
 }
 
