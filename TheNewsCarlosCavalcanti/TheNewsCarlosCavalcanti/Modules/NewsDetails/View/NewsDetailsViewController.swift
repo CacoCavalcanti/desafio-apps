@@ -44,10 +44,6 @@ final class NewsDetailsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = false
-        navigationController?.navigationItem.backButtonDisplayMode = .minimal
-        
-//        self.navigationItem.backButtonTitle = "a"
-//        self.navigationItem.backButtonDisplayMode = .minimal
     }
 }
 

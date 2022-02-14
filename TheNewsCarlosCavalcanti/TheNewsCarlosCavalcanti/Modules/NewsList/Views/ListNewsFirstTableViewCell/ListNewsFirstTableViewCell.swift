@@ -87,9 +87,7 @@ private extension ListNewsFirstTableViewCell {
         
         NSLayoutConstraint.activate([
             newsSectionLabel.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor),
-            newsSectionLabel.bottomAnchor.constraint(equalTo: newsTitleLabel.topAnchor, constant: -8),
-            newsSectionLabel.leadingAnchor.constraint(greaterThanOrEqualTo: newsImageView.trailingAnchor, constant: 32),
-            newsSectionLabel.trailingAnchor.constraint(greaterThanOrEqualTo: newsImageView.trailingAnchor, constant: -32)
+            newsSectionLabel.bottomAnchor.constraint(equalTo: newsTitleLabel.topAnchor, constant: -8)
         ])
     }
     
