@@ -11,6 +11,7 @@ protocol NewsDetailsViewControllerProtocol {
     func reloadData()
     func showShareOptions(for url: String)
     func showError()
+    func didTapShareButton()
 }
 
 final class NewsDetailsViewController: UIViewController {
@@ -87,10 +88,6 @@ private extension NewsDetailsViewController {
             tableView.heightAnchor.constraint(equalToConstant: self.view.frame.height)
         ])
     }
-    
-    @objc func didTapShareButton() {
-        presenter?.didTapShareButton()
-    }
 }
 
 extension NewsDetailsViewController: UITableViewDelegate, UITableViewDataSource {
@@ -144,6 +141,10 @@ extension NewsDetailsViewController: UITableViewDelegate, UITableViewDataSource 
 }
 
 extension NewsDetailsViewController: NewsDetailsViewControllerProtocol {
+    @objc func didTapShareButton() {
+        presenter?.didTapShareButton()
+    }
+    
     func reloadData() {
         tableView.reloadData()
     }

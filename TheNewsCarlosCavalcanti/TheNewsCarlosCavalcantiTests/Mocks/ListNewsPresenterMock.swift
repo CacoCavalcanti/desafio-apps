@@ -7,7 +7,7 @@
 
 @testable import TheNewsCarlosCavalcanti
 
-final class ListNewsPresenterMock: NewsListInteractorToPresenterProtocol {
+final class ListNewsPresenterMock: ListNewsPresenteDelegate {
     
     private(set) var hasCalledFetchedNews: Bool = false
     private(set) var hasCalledNewsFailed: Bool = false

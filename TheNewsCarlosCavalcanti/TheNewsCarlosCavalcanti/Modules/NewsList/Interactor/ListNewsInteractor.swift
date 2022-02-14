@@ -5,17 +5,20 @@
 //  Created by Carlos Roberto Cavalcanti on 10/02/22.
 //
 
-import Foundation
 import Alamofire
 
-final class ListNewsInteractor: NewsListPresenterToInteractorProtocol {
+protocol ListNewsInteractorProtocol {
+    func fetchNews()
+}
+
+final class ListNewsInteractor: ListNewsInteractorProtocol {
     
     // MARK: - Properties
     
-    weak var presenter: NewsListInteractorToPresenterProtocol?
+    weak var presenter: ListNewsPresenteDelegate?
     private let url = "https://raw.githubusercontent.com/Infoglobo/desafio-apps/master/capa.json"
     
-    init(presenter: NewsListInteractorToPresenterProtocol) {
+    init(presenter: ListNewsPresenteDelegate) {
         self.presenter = presenter
     }
     
@@ -31,7 +34,7 @@ final class ListNewsInteractor: NewsListPresenterToInteractorProtocol {
                 }
                 
             case .failure(_):
-                self.presenter?.theNewsFetchedFailed()
+                self.presenter?.newsFetchedFailed()
             }
         }
     }

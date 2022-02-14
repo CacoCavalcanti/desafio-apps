@@ -8,7 +8,7 @@
 @testable import TheNewsCarlosCavalcanti
 
 final class ListNewsInteractorMock: NewsListPresenterToInteractorProtocol {
-    var presenter: NewsListInteractorToPresenterProtocol?
+    var presenter: ListNewsPresenteDelegate?
     
     var news: [NewsModel]?
     

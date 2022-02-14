@@ -7,16 +7,28 @@
 
 import UIKit
 
+protocol ListNewsPresenterProtocol {
+    func updateView()
+    func getNewsListCount() -> Int?
+    func getNews(index: Int) -> NewsModel?
+    func showNewsDetails(controller: UINavigationController, with news: NewsModel)
+}
+
+protocol ListNewsPresenteDelegate: AnyObject {
+    func newsFetched(_ news: [NewsModel])
+    func newsFetchedFailed()
+}
+
 final class ListNewsPresenter: NewsListViewToPresenterProtocol {
     
     // MARK: - Properties
     
     var view: NewsListPresenterToViewProtocol?
-    var interactor: NewsListPresenterToInteractorProtocol?
-    var router: NewsListPresenterToRouterProtocol?
+    var interactor: ListNewsInteractorProtocol?
+    var router: NewsListRouterProtocol?
     private var news: [NewsModel]?
     
-    init(view: NewsListPresenterToViewProtocol, router: NewsListPresenterToRouterProtocol) {
+    init(view: NewsListPresenterToViewProtocol, router: NewsListRouterProtocol) {
         self.view = view
         self.router = router
     }
@@ -41,13 +53,14 @@ final class ListNewsPresenter: NewsListViewToPresenterProtocol {
     
 }
 
-extension ListNewsPresenter: NewsListInteractorToPresenterProtocol {
+extension ListNewsPresenter: ListNewsPresenteDelegate {
     func newsFetched(_ news: [NewsModel]) {
         self.news = news
         view?.showNews()
     }
     
-    func theNewsFetchedFailed() {
+    func newsFetchedFailed() {
         view?.showError()
     }
 }
+
