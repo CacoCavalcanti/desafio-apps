@@ -139,6 +139,7 @@ extension NewsListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         guard let news = presenter?.getNews(index: indexPath.row),
               let navigation = self.navigationController else { return }
         presenter?.showNewsDetails(controller: navigation, with: news)
