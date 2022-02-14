@@ -13,15 +13,24 @@ protocol NewsDetailsPresenterProtocol {
     func didTapShareButton()
 }
 
-final class NewsDetailsPresenter: NewsDetailsPresenterProtocol {
+final class NewsDetailsPresenter {
+    
+    // MARK: - Private Proprieties
     
     var news: NewsModel?
     var view: NewsDetailsViewControllerProtocol?
+    
+    // MARK: - Init
     
     init(view: NewsDetailsViewControllerProtocol, news: NewsModel) {
         self.news = news
         self.view = view
     }
+}
+
+extension NewsDetailsPresenter: NewsDetailsPresenterProtocol {
+    
+    // MARK: - Public Methods
     
     func getCellsNumber() -> Int {
         return 3

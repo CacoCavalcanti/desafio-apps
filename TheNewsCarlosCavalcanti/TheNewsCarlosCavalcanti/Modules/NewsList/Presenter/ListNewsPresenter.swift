@@ -11,9 +11,10 @@ final class ListNewsPresenter: NewsListViewToPresenterProtocol {
     
     // MARK: - Properties
     
-     var view: NewsListPresenterToViewProtocol?
+    var view: NewsListPresenterToViewProtocol?
     var interactor: NewsListPresenterToInteractorProtocol?
     var router: NewsListPresenterToRouterProtocol?
+    private var news: [NewsModel]?
     
     init(view: NewsListPresenterToViewProtocol, router: NewsListPresenterToRouterProtocol) {
         self.view = view
@@ -27,11 +28,11 @@ final class ListNewsPresenter: NewsListViewToPresenterProtocol {
     }
     
     func getNewsListCount() -> Int? {
-        return interactor?.news?.count
+        return news?.count
     }
     
     func getNews(index: Int) -> NewsModel? {
-        return interactor?.news?[index]
+        return news?[index]
     }
     
     func showNewsDetails(controller: UINavigationController, with news: NewsModel) {
@@ -41,13 +42,12 @@ final class ListNewsPresenter: NewsListViewToPresenterProtocol {
 }
 
 extension ListNewsPresenter: NewsListInteractorToPresenterProtocol {
-    
-    func theNewsFetched() {
+    func newsFetched(_ news: [NewsModel]) {
+        self.news = news
         view?.showNews()
     }
     
     func theNewsFetchedFailed() {
         view?.showError()
     }
-    
 }

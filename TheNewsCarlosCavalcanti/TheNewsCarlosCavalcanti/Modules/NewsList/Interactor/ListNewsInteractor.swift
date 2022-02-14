@@ -13,7 +13,6 @@ final class ListNewsInteractor: NewsListPresenterToInteractorProtocol {
     // MARK: - Properties
     
     weak var presenter: NewsListInteractorToPresenterProtocol?
-    private(set) var news: [NewsModel]?
     private let url = "https://raw.githubusercontent.com/Infoglobo/desafio-apps/master/capa.json"
     
     init(presenter: NewsListInteractorToPresenterProtocol) {
@@ -27,8 +26,8 @@ final class ListNewsInteractor: NewsListPresenterToInteractorProtocol {
             switch data.result {
             case .success(let newsData):
                 if let newsList = try? JSONDecoder().decode(NewsModelEntity.self, from: newsData) {
-                    self.news = newsList.first?.content
-                    self.presenter?.theNewsFetched()
+                    guard let news = newsList.first?.content else { return }
+                    self.presenter?.newsFetched(news)
                 }
                 
             case .failure(_):

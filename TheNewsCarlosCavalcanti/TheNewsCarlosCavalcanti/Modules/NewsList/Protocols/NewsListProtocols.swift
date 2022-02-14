@@ -14,13 +14,12 @@ protocol NewsListPresenterToViewProtocol: AnyObject {
 }
 
 protocol NewsListInteractorToPresenterProtocol: AnyObject {
-    func theNewsFetched()
+    func newsFetched(_ news: [NewsModel]) 
     func theNewsFetchedFailed()
 }
 
 protocol NewsListPresenterToInteractorProtocol: AnyObject {
     var presenter: NewsListInteractorToPresenterProtocol? { get set }
-    var news: [NewsModel]? { get }
     
     func fetchNews()
 }
