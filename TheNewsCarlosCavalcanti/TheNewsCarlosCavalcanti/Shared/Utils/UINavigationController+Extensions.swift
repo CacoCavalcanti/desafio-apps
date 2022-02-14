@@ -14,7 +14,7 @@ extension UINavigationController {
     }
     
     func setupNavigationBar(controller: UIViewController, shouldRemoveBackItem: Bool = false) {
-        self.navigationBar.setupAppearanceBar()
+        self.navigationBar.setupAppearanceBar(shouldRemoveBackItem: shouldRemoveBackItem)
         self.setupAppearanceController(viewController: controller)
         navigationItem.backButtonDisplayMode = .minimal
         guard shouldRemoveBackItem else { return }

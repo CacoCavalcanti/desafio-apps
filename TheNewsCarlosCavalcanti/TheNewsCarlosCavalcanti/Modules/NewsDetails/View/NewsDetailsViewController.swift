@@ -53,7 +53,7 @@ private extension NewsDetailsViewController {
     
     func setupNavigationController() {
         navigationController?.navigationBar.isHidden = false
-        navigationController?.setupNavigationBar(controller: self)
+        navigationController?.setupNavigationBar(controller: self, shouldRemoveBackItem: true)
         navigationItem.title = presenter?.news?.section.name
     
         let shareButton: UIBarButtonItem = UIBarButtonItem.init(barButtonSystemItem:.action, target: self, action: #selector(didTapShareButton))

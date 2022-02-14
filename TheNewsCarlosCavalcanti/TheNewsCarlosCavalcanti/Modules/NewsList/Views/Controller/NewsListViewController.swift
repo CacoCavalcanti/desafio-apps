@@ -51,6 +51,7 @@ final class NewsListViewController: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = false
         navigationItem.hidesBackButton = true
+        navigationItem.title = "The News"
     }
 }
 

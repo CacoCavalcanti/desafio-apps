@@ -9,13 +9,15 @@ import UIKit
 
 extension UINavigationBar {
     
-    func setupAppearanceBar() {
+    func setupAppearanceBar(shouldRemoveBackItem: Bool) {
         tintColor = TNStyleGuide.Color.white
         backgroundColor = TNStyleGuide.Color.blue
         titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: UINavigationBar.titleFont]
         
         if #available(iOS 15.0, *) {
-            items?.first?.title = ""
+            if shouldRemoveBackItem {
+                items?.first?.title = ""
+            }
             standardAppearance.backgroundColor = TNStyleGuide.Color.blue
             standardAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: UINavigationBar.titleFont]
             scrollEdgeAppearance = standardAppearance

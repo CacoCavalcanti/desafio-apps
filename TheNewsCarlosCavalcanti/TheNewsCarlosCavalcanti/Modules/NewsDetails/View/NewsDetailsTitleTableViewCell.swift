@@ -36,7 +36,6 @@ final class NewsDetailsTitleTableViewCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
-        label.configure(style: .newsInfo, color: TNStyleGuide.Color.boldBlue)
         return label
     }()
     
