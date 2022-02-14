@@ -15,6 +15,7 @@ extension UINavigationBar {
         titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: UINavigationBar.titleFont]
         
         if #available(iOS 15.0, *) {
+            items?.first?.title = ""
             standardAppearance.backgroundColor = TNStyleGuide.Color.blue
             standardAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: UINavigationBar.titleFont]
             scrollEdgeAppearance = standardAppearance
