@@ -14,7 +14,7 @@ extension UIImageView {
     
     func setImage(with url: URL?, cacheEnabled: Bool = true, callback: ((Error?) -> Void)? = nil) {
         var options: SDWebImageOptions = []
-        let placeholder = UIImage()
+        let placeholder = UIImage.TNImage.placeholder
         
         if !cacheEnabled {
             options = [.refreshCached]
@@ -29,13 +29,13 @@ extension UIImageView {
     func setImage(fromURL stringURL: String?) {
         guard let urlFormatted: String = stringURL?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? stringURL,
         let url = URL(string: urlFormatted) else {
-            self.image = UIImage()
+            self.image = UIImage.TNImage.placeholder
             return
         }
         
         self.setImage(with: url) { [weak self] ( error ) in
             if error != nil {
-//                self?.image = UIImage.FAST.placeholder
+                self?.image = UIImage.TNImage.placeholder
             }
         }
     }

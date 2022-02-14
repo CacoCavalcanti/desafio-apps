@@ -11,6 +11,7 @@ extension UIImage {
     
     struct TNImage {
         static let sandwichBars: UIImage = (UIImage(named: "sandwich_bars")?.withRenderingMode(.alwaysTemplate))!
+        static let placeholder: UIImage = (UIImage(named: "placeholder")?.withRenderingMode(.alwaysOriginal))!
     }
 
 }
