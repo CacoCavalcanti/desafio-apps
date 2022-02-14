@@ -99,19 +99,18 @@ extension NewsDetailsViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let news = presenter?.getNews() else { return UITableViewCell() }
-                
-        switch indexPath.row {
-        case 0:
+        guard let news = presenter?.getNews(),
+              let cellType = presenter?.getCellType(for: indexPath) else { return UITableViewCell() }
+        
+        switch cellType {
+        case is NewsDetailsTitleTableViewCell:
             let cell = tableView.dequeue(cellClass: NewsDetailsTitleTableViewCell.self, forIndexPath: indexPath)
             cell.setup(with: news)
             return cell
-            
-        case 1:
+        case is NewsDetailsImageTableViewCell:
             let cell = tableView.dequeue(cellClass: NewsDetailsImageTableViewCell.self, forIndexPath: indexPath)
             cell.setup(with: news)
             return cell
-            
         default:
             let cell = tableView.dequeue(cellClass: NewsDetailsTextTableViewCell.self, forIndexPath: indexPath)
             cell.setup(with: news)
