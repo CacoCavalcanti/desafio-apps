@@ -5,7 +5,6 @@
 //  Created by Carlos Roberto Cavalcanti on 13/02/22.
 //
 
-import Foundation
 import UIKit
 
 protocol NewsDetailsViewControllerProtocol {
@@ -102,24 +101,24 @@ extension NewsDetailsViewController: UITableViewDelegate, UITableViewDataSource 
         switch indexPath.row {
         case 0:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "NewsDetailsTitleTableViewCell") as? NewsDetailsTitleTableViewCell else {
-                      return UITableViewCell()
-                  }
+                return UITableViewCell()
+            }
             
             cell.setup(with: news)
             return cell
             
         case 1:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "NewsDetailsImageTableViewCell") as? NewsDetailsImageTableViewCell else {
-                      return UITableViewCell()
-                  }
+                return UITableViewCell()
+            }
             
             cell.setup(with: news)
             return cell
             
         default:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "NewsDetailsTextTableViewCell") as? NewsDetailsTextTableViewCell else {
-                      return UITableViewCell()
-                  }
+                return UITableViewCell()
+            }
             
             cell.setup(with: news)
             return cell
@@ -129,7 +128,7 @@ extension NewsDetailsViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.row {
         case 0:
-            return 200
+            return 250
         case 1:
             return 250
         default:

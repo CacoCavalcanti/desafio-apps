@@ -5,7 +5,6 @@
 //  Created by Carlos Roberto Cavalcanti on 13/02/22.
 //
 
-import Foundation
 import UIKit
 
 final class NewsDetailsImageTableViewCell: UITableViewCell {
@@ -83,7 +82,7 @@ private extension NewsDetailsImageTableViewCell {
         let gradient = CAGradientLayer()
         gradient.frame = rect
         gradient.colors = [UIColor.clear.cgColor, UIColor.black.cgColor]
-        gradient.startPoint = CGPoint(x: 1, y: 0.5)
+        gradient.startPoint = CGPoint(x: 1, y: 0.4)
         gradient.endPoint = CGPoint(x: 1, y: 1)
         newsImageView.layer.addSublayer(gradient)
     }

@@ -91,9 +91,6 @@ private extension ListNewsFirstTableViewCell {
             newsSectionLabel.leadingAnchor.constraint(greaterThanOrEqualTo: newsImageView.trailingAnchor, constant: 32),
             newsSectionLabel.trailingAnchor.constraint(greaterThanOrEqualTo: newsImageView.trailingAnchor, constant: -32)
         ])
-        
-        newsSectionLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
-        newsSectionLabel.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
     }
     
     func makeGradient(from frame: CGRect) {

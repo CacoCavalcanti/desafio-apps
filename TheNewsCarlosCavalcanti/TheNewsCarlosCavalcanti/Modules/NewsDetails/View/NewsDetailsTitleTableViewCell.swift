@@ -5,7 +5,6 @@
 //  Created by Carlos Roberto Cavalcanti on 13/02/22.
 //
 
-import Foundation
 import UIKit
 
 final class NewsDetailsTitleTableViewCell: UITableViewCell {
@@ -59,6 +58,8 @@ private extension NewsDetailsTitleTableViewCell {
     // MARK: - Private Methods
     
     func setupViews() {
+        self.backgroundColor = .clear
+        self.isUserInteractionEnabled = false
         addSubviews(newsTitleLabel, newsSubtitleLabel, newsDetailsLabel)
     }
     

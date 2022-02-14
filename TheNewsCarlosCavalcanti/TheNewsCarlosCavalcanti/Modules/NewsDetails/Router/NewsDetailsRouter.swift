@@ -5,7 +5,6 @@
 //  Created by Carlos Roberto Cavalcanti on 13/02/22.
 //
 
-import Foundation
 import UIKit
 
 final class NewsDetailsRouter: NewsDetailsPresenterToRouterProtocol {
