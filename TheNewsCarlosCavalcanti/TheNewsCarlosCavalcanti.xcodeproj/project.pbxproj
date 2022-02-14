@@ -43,6 +43,7 @@
 		11472FA627BA7BCF004404EF /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11472FA527BA7BCF004404EF /* UITableView+Extensions.swift */; };
 		11472FA827BA7BFC004404EF /* UITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11472FA727BA7BFC004404EF /* UITableViewCell.swift */; };
 		11472FAD27BACAED004404EF /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11472FAC27BACAED004404EF /* Date+Extensions.swift */; };
+		11472FAF27BACBA5004404EF /* NSMutableAttributedString+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11472FAE27BACBA5004404EF /* NSMutableAttributedString+Extensions.swift */; };
 		1192A07F27B53B9C00F2BA3E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1192A07E27B53B9C00F2BA3E /* AppDelegate.swift */; };
 		1192A08127B53B9C00F2BA3E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1192A08027B53B9C00F2BA3E /* SceneDelegate.swift */; };
 		1192A08327B53B9C00F2BA3E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1192A08227B53B9C00F2BA3E /* ViewController.swift */; };
@@ -113,6 +114,7 @@
 		11472FA527BA7BCF004404EF /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		11472FA727BA7BFC004404EF /* UITableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCell.swift; sourceTree = "<group>"; };
 		11472FAC27BACAED004404EF /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
+		11472FAE27BACBA5004404EF /* NSMutableAttributedString+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString+Extensions.swift"; sourceTree = "<group>"; };
 		1192A07B27B53B9C00F2BA3E /* TheNewsCarlosCavalcanti.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheNewsCarlosCavalcanti.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1192A07E27B53B9C00F2BA3E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1192A08027B53B9C00F2BA3E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -409,6 +411,7 @@
 				11472FA527BA7BCF004404EF /* UITableView+Extensions.swift */,
 				11472FA727BA7BFC004404EF /* UITableViewCell.swift */,
 				11472FAC27BACAED004404EF /* Date+Extensions.swift */,
+				11472FAE27BACBA5004404EF /* NSMutableAttributedString+Extensions.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -709,6 +712,7 @@
 				11472F8727B93C8F004404EF /* NewsDetailsViewController.swift in Sources */,
 				1192A0BD27B5421F00F2BA3E /* ListNewsTableViewCell.swift in Sources */,
 				11472F8A27B947EF004404EF /* NewsDetailsRouter.swift in Sources */,
+				11472FAF27BACBA5004404EF /* NSMutableAttributedString+Extensions.swift in Sources */,
 				11472FAD27BACAED004404EF /* Date+Extensions.swift in Sources */,
 				11472FA427B9AD8E004404EF /* NewsDetailsPresenter.swift in Sources */,
 				11472F8F27B96D21004404EF /* NewsDetailsTitleTableViewCell.swift in Sources */,

@@ -85,6 +85,15 @@ private extension NewsDetailsTitleTableViewCell {
             newsDetailsLabel.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -8)
         ])
     }
+    
+    func getAttributedText(for news: NewsModel) -> NSMutableAttributedString {
+        let releaseDate = Date.create(byTimeStamp: news.releaseDate)
+        
+        return NSMutableAttributedString()
+            .light(string: "POR ")
+            .black(string: "O GLOBO", color: TNStyleGuide.Color.blue)
+            .light(string: "\n\(releaseDate)")
+    }
 }
 
 extension NewsDetailsTitleTableViewCell {
@@ -94,9 +103,6 @@ extension NewsDetailsTitleTableViewCell {
     func setup(with news: NewsModel) {
         newsTitleLabel.text = news.title
         newsSubtitleLabel.text = news.subTitle
-        let releaseDate = Date.create(byTimeStamp: news.releaseDate)
-        
-        let newsInfo = "Por O GLOBO\n\(releaseDate)"
-        newsDetailsLabel.text = newsInfo
+        newsDetailsLabel.attributedText = getAttributedText(for: news)
     }
 }
