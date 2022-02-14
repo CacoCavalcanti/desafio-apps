@@ -70,9 +70,9 @@ private extension NewsDetailsViewController {
         tableView.dataSource = self
         tableView.delegate = self
         
-        tableView.register(NewsDetailsTitleTableViewCell.self, forCellReuseIdentifier: "NewsDetailsTitleTableViewCell")
-        tableView.register(NewsDetailsImageTableViewCell.self, forCellReuseIdentifier: "NewsDetailsImageTableViewCell")
-        tableView.register(NewsDetailsTextTableViewCell.self, forCellReuseIdentifier: "NewsDetailsTextTableViewCell")
+        tableView.register(cellClass: NewsDetailsTitleTableViewCell.self)
+        tableView.register(cellClass: NewsDetailsImageTableViewCell.self)
+        tableView.register(cellClass: NewsDetailsTextTableViewCell.self)
         
         tableView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
         
@@ -100,29 +100,20 @@ extension NewsDetailsViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let news = presenter?.getNews() else { return UITableViewCell() }
-        
+                
         switch indexPath.row {
         case 0:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "NewsDetailsTitleTableViewCell") as? NewsDetailsTitleTableViewCell else {
-                return UITableViewCell()
-            }
-            
+            let cell = tableView.dequeue(cellClass: NewsDetailsTitleTableViewCell.self, forIndexPath: indexPath)
             cell.setup(with: news)
             return cell
             
         case 1:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "NewsDetailsImageTableViewCell") as? NewsDetailsImageTableViewCell else {
-                return UITableViewCell()
-            }
-            
+            let cell = tableView.dequeue(cellClass: NewsDetailsImageTableViewCell.self, forIndexPath: indexPath)
             cell.setup(with: news)
             return cell
             
         default:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "NewsDetailsTextTableViewCell") as? NewsDetailsTextTableViewCell else {
-                return UITableViewCell()
-            }
-            
+            let cell = tableView.dequeue(cellClass: NewsDetailsTextTableViewCell.self, forIndexPath: indexPath)
             cell.setup(with: news)
             return cell
         }
