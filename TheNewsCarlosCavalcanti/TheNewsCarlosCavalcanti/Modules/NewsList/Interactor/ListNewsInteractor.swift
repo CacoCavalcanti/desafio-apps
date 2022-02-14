@@ -15,10 +15,10 @@ final class ListNewsInteractor: ListNewsInteractorProtocol {
     
     // MARK: - Properties
     
-    weak var presenter: ListNewsPresenteDelegate?
+    weak var presenter: ListNewsPresenterDelegate?
     private let url = "https://raw.githubusercontent.com/Infoglobo/desafio-apps/master/capa.json"
     
-    init(presenter: ListNewsPresenteDelegate) {
+    init(presenter: ListNewsPresenterDelegate) {
         self.presenter = presenter
     }
     

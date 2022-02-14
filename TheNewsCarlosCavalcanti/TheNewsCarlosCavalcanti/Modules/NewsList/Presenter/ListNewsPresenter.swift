@@ -18,7 +18,7 @@ protocol ListNewsPresenterProtocol {
     func showNewsDetails(controller: UINavigationController, with news: NewsModel)
 }
 
-protocol ListNewsPresenteDelegate: AnyObject {
+protocol ListNewsPresenterDelegate: AnyObject {
     func newsFetched(_ news: [NewsModel])
     func newsFetchedFailed()
 }
@@ -57,7 +57,7 @@ final class ListNewsPresenter: ListNewsPresenterProtocol {
     
 }
 
-extension ListNewsPresenter: ListNewsPresenteDelegate {
+extension ListNewsPresenter: ListNewsPresenterDelegate {
     func newsFetched(_ news: [NewsModel]) {
         self.news = news
         view?.showNews()

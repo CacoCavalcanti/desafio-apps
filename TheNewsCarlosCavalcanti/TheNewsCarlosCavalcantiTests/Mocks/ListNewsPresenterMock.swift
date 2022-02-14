@@ -7,7 +7,7 @@
 
 @testable import TheNewsCarlosCavalcanti
 
-final class ListNewsPresenterMock: ListNewsPresenteDelegate {
+final class ListNewsPresenterMock: ListNewsPresenterDelegate {
     
     private(set) var hasCalledFetchedNews: Bool = false
     private(set) var hasCalledNewsFailed: Bool = false
